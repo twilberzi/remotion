@@ -643,7 +643,7 @@ function renderGrid() {
     const posterAttr = c.poster ? `poster="${c.poster}"` : '';
     const videoEl = c.video
       ? `<video class="card-video" src="${c.video}" ${posterAttr} muted loop preload="metadata"
-           onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"
+           onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;this.load();"
            style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
       : `<div class="card-thumb-placeholder">▶</div>`;
     return `
