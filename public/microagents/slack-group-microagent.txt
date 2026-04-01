@@ -1,0 +1,2281 @@
+Munna Kumar Jaiswal  [4:06 AM]
+I found the fix for Jira connection and I am able to create Jira from Microapps.
+Step 1. Not seeing a tool? Click here.
+Step 2 Click Connect against tool you need connection access.
+Thanks Team for Looking into this.
+Thanks @khyathi.nannapaneni and @sainath.reddy (edited) 
+
+2 files 
+
+
+
+
+
+Sowkhya Adiga  [12:01 PM]
+Hi Team,
+I'm currently facing an issue while trying to connect my micro app to Atlassian. Could someone please assist me with this? When executing the following code:
+const searchResult = await apiClient.callTool('atlassian-confluence_search', { query: searchTerm, limit: 5 });
+I receive the following error message:
+Confluence search failed. :x: HTTP 404 Error - Confluence Server Not Found This means the Confluence server is not configured or the URL is incorrect. **Possible Causes:** 1. The Atlassian MCP server is not properly configured 2. The Confluence server URL is incorrect or missing 3. The Confluence instance is not accessible 4. Authentication credentials are missing or invalid **How to Fix:** 1. Check your MCP server configuration for Atlassian/Confluence 2. Verify the Confluence server URL is correct (e.g., https://your-domain.atlassian.net) 3. Ensure authentication tokens/credentials are valid 4. Check if you need to configure CONFLUENCE_SPACES_FILTER environment variable **For Testing:** Try using the Salesforce data source instead, or contact your administrator to configure Confluence access.
+
+
+Ashish Goyal  [11:34 AM]
+@william.talleur - Can you please help in sharing this microapp with Executive - Procurement group/org in ZI-Chat staging env?
+
+https://zoominfo-chatbot-ui.zios-apps-primary.stg.zi-int.com/micro-apps/38/14
+
+https://zoominfo.slack.com/archives/C09B184JEDA/p1759268012046709
+
+
+
+Hi @william.talleur
+Two quick questions about ZI-Chat access:
+1. Atlassian Tools Access Issue
+I noticed Atlassian tools weren't available for @munnakumar.jaiswal in ZI-Chat, but I have access in mine.
+Seems org-based:
+• Munna: Corporate Engineering - S&M - Business Technologies
+
+
+
+Thread in zi-chat-microapps | Sep 30th, 2025 | View message
+Melissa Leigh  [3:50 PM]
+Hi team, when I click the jfrog artifactory aws tile, I get the attached error. I have two other jfrog tiles on my okta that I dont have any issues logging into, but want to do the setup for the microapps, which specifies the aws one
+
+2 files 
+
+
+
+Jagmohan Singh  [5:24 PM]
+Team, If you're encountering errors during the Micro-App creation process, the issue might be related to your npm registry configuration.
+Quick Fix Steps:
+1. Check Your Current Registry
+First, verify which npm registry you're currently using:
+npm config get registry
+2. Compare with the Standard Command
+The standard Micro-App creation command uses this registry:
+
+npx --registry=https://artifacts.zi-int.com/artifactory/api/npm/zi-npm-virtual/@zoominfo-chat/create-micro-app <your-micro-app-name>
+3. Match Your Registry Configuration
+If your registry doesn't match, you need to update the command to use your specific registry URL from your .npmrc file configuration.
+Example Solution:
+In my case, my npm registry is configured as:
+
+registry=https://zoominfo.jfrog.io/artifactory/api/npm/virtual-npm/
+
+So I use this modified command:
+BASH
+npx --registry=https://zoominfo.jfrog.io/artifactory/api/npm/virtual-npm/@zoominfo-chat/create-micro-app <your-micro-app-name>
+
+@william.talleur Please connect me if this is not the case. (edited) 
+
+Keegan Cantrell  [5:33 PM]
+I troubleshooted my way through to the same solution @jagmohan.singh
+
+[5:33 PM]
+So 
+
+Keegan Cantrell  [5:56 PM]
+For anyone new to AI IDE development its a good idea to make yourself a short PRD, ideally after pulling the full tool index using the dev tools (step on the walkthrough guide) so you can map tool use to user stories.
+
+Here is my example I built in gemini first with the "As a user I want to do X" kind of approach. https://docs.google.com/document/d/1_znIsLwBZ3KZhAdObTQ7pflqviwxTJNOFhY3S2z_2CI/edit?tab=t.0
+
+Also here is my markdown reference file for those who don't already have it and just want to add it to your application folder for reference.
+
+That is if you're coding from scratch.
+
+AVAILABLE-TOOLS.md 
+# Available Tools Reference
+​
+This document provides a comprehensive reference of all tools available to this MicroApp. Use this as a quick lookup when building features.
+​
+**Last Updated:** October 2, 2025  
+Google Docs
+
+
+
+Keegan Cantrell  [5:57 PM]
+@zach.day this is the kind of thing I was thinking about for you on our upcoming call anyways so you can start here
+
+Zach Day  [5:58 PM]
+my god you just made my day
+
+Keegan Cantrell  [6:00 PM]
+I also recommend asking cline to build "steering" documents as you get going to ensure your architecture, intent for your build etc etc, are captured as you go, otherwise if you start developing (features/updates) in parallel you and the AI might get lost
+
+(Again mostly for people new to AI development) (edited) 
+
+
+
+Bala Phani Krishna Dulipalla  [1:51 PM]
+Hey Team, I have a question how do I have to connect my microapp to the ZI Chat Staging?
+
+Corey Saksik  [2:58 PM]
+Hello, what is the process to get an Anthropic API key for Cline?  Do I ask here or a different channel?
+
+Keegan Cantrell  [4:58 PM]
+Thought I'd share a demo of my microapp after grinding through a lot of SOQL query and reference issues.
+
+This is my DaaS master tracker for our org in alpha (V0.85)
+
+Example user statements;
+
+	•	As a user I want to be able to see all the daas org opps pre and post sales in a dashboard
+	◦	I want to be able to click through to those opps
+	•	As a user I want to be able to organize by MY opps pre or post sale or as a manager
+	•	As a user I want to be able to organize MY cases by stage, opp, owner, etc
+	•	As a user I want this all to be exportable to CSV.
+
+
+Will take some time, but finally got it mostly stable and pulling the right data.
+
+Not public yet, has some work before I can do a stable release
+
+Keegan's ZICHAT Microapp - DaaS Master Tracker Demo V0.85 Alpha Build.mov 
+
+
+
+
+1x
+
+
+
+
+[5:00 PM]
+This will go along way towards proper opp and case auditing for all daas related work which currently has issues with visibility and enforcement of cases so it's hard to track in SF and pull these things through reports as a team. This should give power back to the org to audit their own opps, cases, engagements and make changes in SF quickly or see gaps. etc etc
+
+Keegan Cantrell  [6:41 PM]
+@william.talleur what's the protocol for sharing via git? Should my account be aligned with ZI before I publish or should I leave it private and just add people here from ZI manually?
+
+Jody Roberts  [8:05 PM]
+Can someone here grant me access to the staging env?
+
+
+
+Arun Chandran  [2:45 PM]
+Hi @jack.avina & @william.talleur, good day!
+ I’d like to confirm a few details regarding Microapp configuration:
+	•	Am I able to modify a Microapp I’ve already created? I currently don’t see an edit option on my end.
+	•	Is deletion of an existing Microapp permitted?
+	•	Are there any permission requirements or limits on creating multiple Microapps?
+
+
+PS:I don't see neither the pencil/trash can in my microapp.
+Appreciate your clarification on this.
+image.png 
+
+Arun Chandran  [2:45 PM]
+image.png 
+
+
+
+Keegan Cantrell  [3:02 PM]
+Note for anyone that gets this error, make sure when the ZIP package is compiled that the folder structure is correct, as the apps expect index.html at the root, and cline/claude always seems to put them in /dist causing a failure on upload. Not always the reason for this error, but usually why my app doesn't fire when the package is rebuilt
+
+Screenshot 2025-10-06 at 12.01.17 PM.png 
+
+Keegan Cantrell  [3:30 PM]
+Screenshot 2025-10-06 at 12.30.16 PM.png 
+
+Keegan Cantrell  [3:31 PM]
+Also anyone else having issues with boxes not being "clickable" is that by design? I've enabled popups for the "ZIChat" window, but the only way to click through is by right clicking and opening a new tab. I tried to enforce that behavior in the code but no success
+
+Jessica Buchwald  [3:50 PM]
+Hi team! Can I have access to create microapps please?
+
+Jack Kelleher  [6:29 PM]
+Hi team,
+On the first major Cline request for a new MicroApp, I'm running into "Credit Limit Reached" errors.  What should/can I do?
+image.png 
+
+Keegan Cantrell  [6:33 PM]
+Excited to share my app is production ready and live in microapps! It's built for the DaaS team to solve some long existing tracking pain in our org, but should serve as inspiration for any other deal/case trackers.
+
+Link to app (made public so everyone can play with it if they want) https://zoominfo-chatbot-ui.zi-ext.com/micro-apps/147/40
+
+Lots of quality of life additions in this actual release like:
+	•	Multiselects for all filters
+	•	Search functionality for descriptions and subjects (very helpful for auditing)
+	•	Calendar picker components
+	•	Revised summary components on each module
+	•	Fast export with links that have parity with the live tables.
+	•	Better UX/UI etc etc
+Still a few bugs
+	•	drop downs that don't render all arrays
+	•	pulling in too many products/product families from SOQL query
+	•	nothing that breaks the app though
+
+
+Here is the git repo link if you want to fork it https://git.zoominfo.com/keegan-cantrell/Microapp-Daas-Master-Tracker for those who have access to ZI git.
+
+Included an updated walkthrough of the changes and speed.
+
+Thank you to the team for creating the microapps platform. Been waiting on something like these to enable people who really want to build for a while. I like ZI because we say we want entrepreneurial spirit, and then actually give the tools to the team to go and execute on it. (edited) 
+
+Microapp - DaaS Master Tracker V1.2 LIVE (Builder - Keegan Cantrell).mov 
+
+
+
+
+1x
+
+
+
+
+
+
+
+
+Pavan Kumar Yadalam  [4:28 AM]
+Hi Team, Please do share if we have any documentation on deploying the microapps from build stage to test stage.
+
+Harshith Srinivas  [10:25 PM]
+Hi Team,
+We’re working on a few microapps, but some team members are unable to access them due to org permissions. Could we please grant access to the following users in both orgs: @munnakumar.jaiswal, @melissa.leigh, @khyathi.nannapaneni, @bhuvnesh.gupta, and @madhu.panneerselvam, @julie.sarmiento
+	1	Corporate Engineering - S&M - Business Technologies
+	2	Corporate Engineering - G&A - Enterprise Technologies
+
+
+Pavan Kumar Yadalam  [2:57 AM]
+Hi Team, Please let me know if we have any documentation related to CI/CD pipeline  guidelines or standards. Looking for info on branching strategy, deployment processes, security requirements, testing standards, etc.
+
+Yogesh Kudallur Hariharasuthan  [9:33 AM]
+Hi Team, I have created a micro app to create google site and I'm getting below error. How can i sign in with google in ZI Chat.
+Can someone help me with the steps to move forward ?
+image.png 
+
+Yogesh Kudallur Hariharasuthan  [11:01 AM]
+replied to a thread:
+I created a micro app which will help us to create Google site. For this our micro app to have a Google OOath. I tried clicking teh sign In to Google and it was giving me this error. I need to use my ZI google account to login.
+happy to connect over call for more details.
+Keegan Cantrell  [12:37 PM]
+Maybe a dumb question but in the full tools list I don't see an explicit call out for bringing genAI calls back into the microapp. Am I missing something obvious?
+
+Ex. I want to be able to add next steps recommendations to a column in a data table, and do a simple transformation of the data already in each row using genAI.
+
+Ex2. I want to be able to integrate a tab for artifact generation based on my list of companies/cases.
+
+I feel like there is some overlap with chat vs microapps, but open to thoughts here too.
+
+Derek Tran  [12:53 PM]
+@here Hi team, we'd like to restrict Microapp access to a certain group of people.  How to go about that?  Do we create a 'workspace' or is there a better way?
+
+Keegan Cantrell  [1:37 PM]
+Request: Can we have the description be expandable or viewable? I added a whole markdown file with details on the app, and you can't actually expose it from the microapps page as when you click on the card, it just opens the app
+
+Screenshot 2025-10-08 at 10.36.29 AM.png 
+
+
+
+Aayushi Jain  [5:32 AM]
+Question: Do I need to Set Up Authentication at MCP Server Level to make it working. Though It has been connected well but not extracting data. Is there something else I'm missing.
+
+Rob Ng  [1:58 PM]
+Hello - I'm trying to login to ZI Chatbot -staging but getting a blank screen. My Zscaler is running and authenticated, any ideas?
+
+Keegan Cantrell  [7:27 PM]
+Anyone else making two microapps one prod one staging? haha
+
+[7:27 PM]
+I have people using and testing my now and don't want to blow up the live one
+
+Russell Levy  [11:55 PM]
+In general you should great staging as just testing. That environment won't be as stable, etc.
+
+
+
+Jeff King  [9:26 AM]
+Hello can i be added to the staging environment?  Thanks!
+
+Kevin Brown  [10:59 AM]
+I’m trying to upload a new microapp, but I’m not getting any results. I also noticed that my previously uploaded microapps are no longer working. Could someone please assist in troubleshooting this issue?
+
+2 files 
+
+
+
+Corey Saksik  [11:12 AM]
+Who should we check with on status of an Anthropic key request?  I submitted last Friday but haven't seen anything
+
+Sainath Reddy  [1:37 PM]
+Hi, We're developing a procurement use case that requires document management capabilities within a ZI Chat MicroApp. Our specific requirements are:
+Use Case:
+Users will upload documents (PDF, DOCX, HTML, TXT) through an application form built as a ZI Chat MicroApp
+Users need to query and retrieve information from these uploaded documents via natural language prompts within the MicroApp interface
+Technical Requirements:
+Document Storage: Ability to persist uploaded documents within the ZI Chat ecosystem
+Content Extraction: Automatic parsing and indexing of document contents for searchability
+Query Interface: API or mechanism to allow the MicroApp to send user prompts and receive contextual responses based on stored document content
+Session Management: Maintaining document context across user interactions within the MicroApp
+Key Questions:
+Does ZI Chat provide native document storage and retrieval APIs for MicroApp integration?
+What are the supported file formats and size limitations?
+How can we implement document-based Q&A functionality within our custom MicroApp?
+Are there existing patterns or reference implementations for similar document-centric MicroApps?
+Could you provide guidance on the available capabilities and recommended implementation approach for this document management workflow?
+ CC: @russell.levy @william.talleur @suneetha.yanimineni
+
+Menaka Raman  [2:17 PM]
+Hi, Can we invoke a predefined agent from a microapp, could someone please share instructions on how to do this and may be pass some parameters from the microapp to the agent?, part - 2, can the output of an agent say a PDF file be then consumed by the microapp to store it in a database?
+
+Bala Phani Krishna Dulipalla  [2:58 PM]
+I want to integrate the microapp with Confluence. Does it require the Confluence API and instance for setup?
+
+William Talleur  [5:03 PM]
+We're aware of our staging UI not loading and working on it, stay tuned!
+
+Ashish Goyal  [5:25 PM]
+@william.talleur — just checking: has there been a change to the Snowflake semantic layer today? I noticed that in my agent, the user interaction prompt seems off.
+
+Ashish Goyal  [5:25 PM]
+I used to get this until 10 am today
+
+image.png 
+
+[5:26 PM]
+Now i am getting this
+
+image.png 
+
+Tyler Loughlin  [5:47 PM]
+I'm getting degraded performance from Claude right now. Anyone else? It's not following clear directions like it normally does.
+
+William Talleur  [6:50 PM]
+Hi folks, an update on our ZI Chat staging environment being down - there is a wider infrastructure/networking issue outside of our control, you can follow this thread for updates:
+
+https://zoominfo.slack.com/archives/C029E4R5ALV/p1760129212508789
+
+Production is operating normally and you can work with microapps on https://chat.zoominfo.co/micro-apps!
+
+Update: Staging is back online (edited) 
+
+
+
+Zach Day  [12:28 PM]
+silly question - i now have my anthropic key - how do i activate it
+
+
+
+Sainath Reddy  [4:38 AM]
+replied to a thread:
+@russell.levy @william.talleur Gentle reminder on this update. Thanks
+
+Manjusha Nair  [11:48 AM]
+Tip to reduce usage cost in Cline
+As we continue working enthusiastically on AI projects, here’s one way to save costs.
+
+Cline usage costs grow exponentially with longer tasks. To lower costs, restart tasks before the context window gets too large.
+For example: when building a UI, once the context window reaches around 60%(screen shot below), type “summarize the chat and start a new task.” Cline will prompt “Start New Task with Context.” Select it, and the new task resets to $0.
+Note: Use this method only for tasks that can be restarted easily, such as UI building.
+
+image.png 
+
+
+
+Ashish Goyal  [1:25 PM]
+@jack.avina,
+As discussed during the meeting, there are two new feature requests:
+	1	Secret Management Integration: Enable access to secret management platforms such as Akeyless to securely manage and retrieve credentials.
+	2	Service Account for ZI Chatbot (Snowflake): Implement support for a service account in the ZI chatbot for Snowflake, ensuring that data access is governed by the service account instead of individual user-level permissions.
+cc: @mark.johnson @venkat.chivukula @igor.kolton @william.talleur (edited) 
+
+Jamie Tomosunas  [3:06 PM]
+can I please get staging access?
+
+Menaka Raman  [6:07 PM]
+Hi t@here  I am calling an agent from a microapp and displaying the output in a tab within my microapp. I would like the information to be displayed the same way as if I were to execute the agent directly. For example when I execute it directly I get a pdf output whereas when I do it through the microapp invocation it returned raw output. Also I would like to see the zi chatbot window to be able to further query the results or fine tune it. Are these possible
+
+Julie Sarmiento  [6:53 PM]
+hi team, I am trying to get the username of the person loggedin to run the microapp. is there a way to get that information? been asking cline to do it but it is not displaying the user
+
+
+
+Ashish Goyal  [7:43 PM]
+Hi @william.talleur ,
+I wanted to reach out regarding environment variable injection for our microapp to ensure proper database targeting across deployment stages.
+
+Context: We have three Snowflake databases that align with our deployment pipeline: Dev → STG → PRD. Our control flow follows this progression through Dev → QA/UAT → Production deployments.
+
+Security Requirement: For data governance and security purposes, we need to ensure:
+	•	Development data is not accessible in the production environment (and vice versa)
+	•	Staging chatbot points to the STG database
+	•	Production chatbot points to the PRD database
+
+
+Standard Approach: In containerized applications (Docker/Kubernetes), this is typically handled by injecting environment variables at deployment time through:
+	•	Kubernetes ConfigMaps and Secrets
+	•	Docker Compose environment files
+
+
+The application reads these variables at runtime to determine which database connection string or environment-specific configuration to use.
+
+Request: For our microapp implementation within the chatbot platform, we need a similar mechanism to dynamically determine the environment context.
+
+Proposed Solutions:
+	1	Can you provide an environment variable that returns "STG" in the staging chatbot and "PRD" in the production chatbot?
+	2	Alternatively, is there another recommended approach to programmatically determine whether the app is running in staging vs. production?
+This will allow us to configure database connections appropriately based on the deployment environment while maintaining proper access controls.
+Please let me know what options are available, and I'm happy to discuss further details or alternative approaches.
+
+cc: @mark.johnson @igor.kolton (edited) 
+
+
+
+Sowkhya Adiga  [7:18 AM]
+Hi team, I am getting the below error while using cline, can someone help
+400 {"type":"error","error":{"type":"invalid_request_error","message":"You have reached your specified workspace API usage limits. You will regain access on 2025-11-01 at 00:00 UTC."},"request_id":"req_011CUCAecxYJidfvdpisgX6U"}
+Request ID: req_011CUCAecxYJidfvdpisgX6U
+Aayushi Jain  [7:21 AM]
+Hey Team, I am also receiving following issue of limit exceed for API Request. Any resolution?
+
+Screenshot 2025-10-17 at 4.49.35 PM.png 
+
+Russell Levy  [7:40 AM]
+you need the admin of your anthropic workspace to update the limits.
+
+Russell Levy  [7:42 AM]
+the workspace is called "Corporate Engineering - S&M". you may want to reach out in #zi-anthropic-access or to @arkady.landes
+
+[7:43 AM]
+the spend limit for the workspace is $400 and it's been reached (edited) 
+
+Ashish Goyal  [11:29 AM]
+@aayushi.jain – We already have a separate thread on this with the DevOps team/Arkady.
+ Let’s continue the discussion in the #ai100-helpdesk channel to keep everything consolidated.
+
+Ajjaay Ramchanddani  [2:43 PM]
+Hi, I am trying to access zi-chat-staging, though I am able to see the zi-chat-staging Tile on Okta but not able to access it.
+can I get some assistance here.
+cc: @william.talleur
+
+
+
+Jeff King  [3:44 PM]
+Hi I am trying to launch a microapp and but am just getting an blank screen with my microapp title when uploading.  Wanted to see if someone can advise next steps to follow - since it looks like my zip file structure is following the dev guide and am able to run the scripts in VS Code/CLine.  I'll add more details in this thread for context.
+
+Julie Sarmiento  [6:00 PM]
+Hi, i am trying to login to Zichat Staging and it has this error. I am able to login to zi chat Prd
+
+Screenshot 2025-10-20 at 2.59.38 PM.png 
+
+William Talleur  [6:16 PM]
+Hi team, our staging environment is currently down due to external services that are still recovering from the AWS outage. We'll update you when it's back up.
+
+In the meantime, our production environment is still stable: https://chat.zoominfo.co/micro-apps
+
+William Talleur  [10:44 PM]
+Update: our staging environment is back online
+
+
+
+Pavan Kumar Yadalam  [7:59 AM]
+Hi Team ,I am trying to use the MCP tool <get_google_sheet> to retrieve the data from the google sheet in the microapp < stagging environment> and getting this error .
+
+MicroApp bridge not available. Check deployment settings.
+MCP bridge not available. Ensure MCP is enabled in deployment settings. (edited) 
+
+Keegan Cantrell  [2:16 PM]
+Wanted to share a win with the team here to inspire everyone to keep grinding on their microapps!
+
+Got my app to a stable release with added features; https://chat.zoominfo.co/micro-apps/147/40 and immediately had some emergent benefits for taking from the microapp and bringing it back to ZIchat.
+
+My manager @william.jennings was able to use the app I created for our org which makes revenue data auditing consistent and deterministic (not probabilistic) to pull and configure his own full read out dashboard for @alex.lazerowich for all daas opps in 30 mins, when this had taken 4-5 business days previously. (this is just one of many use cases that have already emerged.)
+
+Shown here; https://chat.zoominfo.co/content/fe6288b0-102d-4de8-8de4-4a903e04ab88
+
+Includes drill downs, risk analysis, deal scoring, etc etc all made possible by consistent data foundations and a microapp that supports the team being their own multipliers by reducing friction created by standard revops processes in salesforce (no disrespect to revops, it's hard problems over there)
+
+TLDR: we're able to do more ourselves and create huge gains in operational velocity and resource reduction instead of asking revops to build something for us.
+
+[2:18 PM]
+I'm very bullish on microapps long term because it's a development canvas I've been dreaming of for years and we've been given the keys to do so many things as internal entrepreneurs and operators. Not having to wait for ops to build things when we have the vision, AI and a managed package is amazing. Very thankful here to the full team for exposing these things to the greater org.
+
+Ashish Goyal  [6:30 PM]
+Hello @william.talleur, Hope you are doing good.
+@mark.johnson needs to release this microapp to the Sales team tomorrow morning: https://chat.zoominfo.co/micro-apps/80/150
+Target Audience:
+	•	Approximately 21 users (CRO, their directs, and directs of SVPs)
+Request: Can we connect today to get this deployment completed?
+Additional Question: I'd also like to explore our options for workspace management:
+	1	Option A: Can we create a new workspace and add users directly to access our apps and agents?
+	2	Option B: Do we need to work with your team to enable microapp access for different organizations?
+Please let me know your availability today and which approach would work best.
+
+
+
+Cam Fortin  [2:09 PM]
+Hello (I think @william.talleur is right person, but I'll take anyone) - can I get assigned to staging? Trying to follow microapp instructions and got "user not assigned to application" error when following this step: Navigate to ZI Chat and open MicroApps: https://zoominfo-chatbot-ui.zios-apps-primary.stg.zi-int.com/micro-apps"
+
+Cam Fortin  [4:23 PM]
+@wayne.nolette - could you share your Chrus Business Metrics microapp zip? I want to reverse engineer your JIRA tool usage and I can't figure out how to make it happen currently (and Jira isn't in the tool list, but I'm assuming there is some way to access the broader ZI Chat tools and that's what I'm really interested in figuring out how to do in microapp paradigm)
+
+
+
+Jack Avina  [2:27 PM]
+https://zoominfo.slack.com/archives/C092UAZ4LS0/p1761243008360679
+
+
+
+ Hello @here
+
+We’re moving forward with the rollout of GatewayAI (powered by Requesty.ai) - and starting today, please switch from your personal Anthropic keys to using GatewayAI only.
+
+ Instructions:
+Follow this guide to start using GatewayAI in Cline and RooCode:
+ Users – How to Use Requesty.ai in Cline & RooCode
+
+ What changes:
+	•	You no longer need to manage your personal keys for Gemini, OpenAI, or Anthropic - GatewayAI will automatically handle this for you.
+	•	You can switch between models and providers directly within GatewayAI.
+	•	Built-in cost optimization and routing intelligence ensure up to ~80% savings compared to using direct APIs.
+	•	You’ll also gain centralized visibility into model us…
+
+Thread in zi-anthropic-access | Oct 23rd, 2025 | View message
+Ashish Goyal  [7:39 PM]
+Hello @william.talleur @jack.avina,
+I noticed that agentSync and agentAsync methods are now exposed in Cline rules. This is great for invoking agents via microapps!
+Questions:
+	1	Documentation: Is there documentation available on how to use these methods?
+	2	Use Cases: When should we use agentSync vs agentAsync?
+	3	Behavior Clarification:
+	◦	agentAsync: Does this mean "fire and forget" - we invoke the agent but don't expect a response?
+	◦	agentSync: Does this mean we get the response immediately/synchronously?
+Understanding these patterns will help us implement the right approach for different use cases in our microapps.
+Thanks, Ashish (edited) 
+
+
+
+Zach Day  [1:52 PM]
+hey team - is this expected: To install the dependencies, you need to connect to the ZoomInfo VPN (not just turn off Private Access mode).
+
+Ajjaay Ramchanddani  [2:10 PM]
+Hey team, I am facing issue while accessing the Zi-chat Staging,
+can I get some assistance on below error,
+image.png 
+
+
+
+Russell Levy  [3:27 AM]
+if anyone has trouble making the switch to requestly, don't sweat it right now! we may not have to make the switch
+
+
+
+Sam Darcy  [3:40 PM]
+Is there a 2 minute hardcoded timeout for tool calls? I am sending off a request to my agentic backend via a tool of mine however we get 500's in the microapp but not in the agentic platforma API.
+
+I noticed that the 500 returns right around 120 seconds so I am wondering if that is ZI Chat timing out the call?
+
+
+
+Cole DiForte  [9:45 AM]
+I don't see the "localhost dev" tile in my microapp library that's needed to test microapp output in dev mode. Is this an access issue or are there other steps I should be following?
+
+Vinayaka MG  [11:28 AM]
+
+
+Hi Team,
+When I extract the tool response for Analytics, I receive a large JSON code base. It was working earlier, but now the response includes information from other tools as well. By default, it selects data from Analytics and the sales toolset.
+This JSON causes a timeout in the micro-app due to its 26,000+ lines.
+2 files 
+
+
+
+Thread in zi-chat | Oct 28th, 2025 | View message
+Corey Saksik  [1:47 PM]
+Is google sheets integration available in staging?
+
+Blaine Browning  [1:50 PM]
+Is there a persona, knowledge base, or agent that can help refactor code to work with microapps or help build microapps?  Has context of the syntax and MCP server details, how to upload / host, etc?
+
+Raghuram Parthasarathy  [3:46 PM]
+Team, I have a microapp that fetches data from a Google Sheet using the `google-sheets-readAllFromSheet` tool.
+
+The dashboard works for me but returns “HTTP 404: Not Found” errors for my team members when they try to access it, even though I’ve:
+
+- Set the Google Sheet to “Anyone at ZoomInfo can view”
+- Manually added team members with Viewer permission
+
+I believe the issue is that the MicroApp platform’s service account needs to be granted access to the Google Sheet. Is this the case?
+
+
+
+Blaine Browning  [12:11 PM]
+Can I get access to staging please?
+
+Blaine Browning  [12:15 PM]
+As a follow up to the above, the microapp that is in staging that @ashish.goyal referenced will be absolutely AMAZING to get some less technical people off the ground.  The branding aspect of it alone will probably be helpful for many people.  Should be highlighted once deployed in production.
+
+
+
+Harish Tamilarasan  [1:22 PM]
+Hi team, I need staging access to ZI Chatbot for micro-apps access/development" . Url: https://zoominfo-chatbot-ui.zios-apps-primary.stg.zi-int.com/.
+please add me to Corporate Engineering - G&A - Enterprise Technologies
+Liang Yang  [3:16 PM]
+Hi team,
+My micro-app is working fine in stg, if I uploaded it in a zip file. However, npm run dev and copy the portal to the testing app without a zip file. It's not working - MicroApp not found. Please see error message screenshots below. Any help is much appreciated  and using local portal test was working two days ago, not sure what has changed   thank you @ashish.goyal for your initial help (edited) 
+
+image.png 
+
+Jeff King  [3:18 PM]
+Hi team - can i get access to the staging environment?  I wanted to view one of the apps that @vinayaka.mg had built.
+
+
+
+Liang Yang  [11:29 AM]
+Could anyone help grant @natasha.azar access to micro-apps on zi staging Corporate Engineering - G&A - Enterprise Technologies. What's strange is she is already in that workspace, but I could find her on the user list to add and she has logged in zi chat staging. Thank you!
+
+
+
+Gal Orr  [2:04 PM]
+hi
+can i get staging access ?
+William Talleur  [3:39 PM]
+Hi all, we will be conducting maintenance on our staging environment shortly to consolidate organizations/workspaces for easier governance. Your access and data will not be impacted. We'll post an update here when the environment is back online.
+
+William Talleur  [5:10 PM]
+Maintenance is complete - please let us know if you find any issues in staging!
+
+
+
+Cooper Robertson  [10:19 AM]
+Can I get staging access as well? I would like to go through the microapp that @vinayaka.mg built. @jeff.king shared the link, but I don't have the correct permissions to view it.
+
+Seif Dorani  [11:35 AM]
+Hello team,
+
+I am trying to create my first MicroApp using the standard command but I am running into a persistent ECONNRESET network error. I have gone through all the basic troubleshooting steps provided in the documentation.
+
+Command Run (Failing):
+npx @zoominfo-chat/create-micro-app hr-test-app
+Error Message:
+npm ERR! error code ECONNRESET npm ERR! network request to https://artifacts.zi-int.com/... failed, reason: Client network socket disconnected before secure TLS connection was established
+
+
+Troubleshooting Steps Taken:
+	1	Registry Verified: I confirmed the registry is correctly set to the internal Artifactory URL for ZPA users:
+	2	npm config get registry
+	3	# Output: https://artifacts.zi-int.com/artifactory/api/npm/zi-npm-virtual/
+	4	Proxy Configuration Checked: I verified that no proxy is currently set in my npm configuration:
+	5	npm config get proxy # Output: null
+	6	npm config get https-proxy # Output: null
+	7	(I have not set a proxy as I am unsure of the specific address and suspect the ZPA connection should handle it.)
+	8	ZPA Status: I have confirmed that ZScaler Private Access (ZPA) is connected and stable, but the ECONNRESET error still occurs immediately when the network request is made.
+
+
+Given that the issue is not the registry path or a simple missing proxy configuration, it appears to be a deeper problem related to ZPA routing or a certificate issue preventing the secure TLS connection.
+
+Can someone please assist me with debugging my internal network/ZPA setup for connecting to the Artifactory registry?
+
+
+MicroApp Development Guide
+
+
+Owned by: Danny Myers | 4 comments | 233 people viewed
+
+
+
+
+
+
+Added by Confluence Cloud
+Ashish Goyal  [7:36 PM]
+Hi @william.talleur,
+Just following up on the feature request I submitted ~2 weeks ago for automatic server detection in the chatbot. This would enable the app to dynamically point to the correct database based on deployment environment without requiring code changes.
+Do you have any updates on this? It's becoming important for our deployment strategy going forward, so any timeline or status update would be helpful.
+
+
+Pavan Kumar Yadalam  [2:20 AM]
+Hello Team ,
+
+When my colleagues try to open the microapp using the URL, they encounter the following error.
+However, the same app is accessible when they navigate through the ZI Chat microapps section.
+
+Microapp URL : Microapp SOPs
+
+Error screenshot :
+
+Please let me know if this anything to do with the Okta login. (edited) 
+
+image.png 
+
+Blaine Browning  [10:00 AM]
+Does the icon indicate unique users who have used it?  Sessions?  I.e., if one person accesses the microapp multiple times, does it count as 1 or many?
+
+image.png 
+
+Seif Dorani  [11:23 AM]
+Hey team! Just wanted to follow up on: https://zoominfo.slack.com/archives/C09B184JEDA/p1762187730726689 - please let me know if there is someone I can work with on this? I would really like to drive adoption but also build an AI academy for non technical folks.
+
+
+
+Hello team,
+
+I am trying to create my first MicroApp using the standard command but I am running into a persistent ECONNRESET network error. I have gone through all the basic troubleshooting steps provided in the documentation.
+
+Command Run (Failing):
+npx @zoominfo-chat/create-micro-app hr-test-app
+
+
+
+Posted in zi-chat-microapps | Nov 3rd, 2025 | View message
+Julie Sarmiento  [12:56 PM]
+HI Team, in my microapp, I needed to get the email id of the user who executed the microapp. Cline Implemented the tool zoominfo-salesforce-service-getCurrentSalesforceUser to get the current user’s email address. is there a better tool or better way of getting the email add of the current user? Thank you
+
+
+
+Sam Darcy  [9:40 AM]
+Just checking, microapps have to use tools to make outside networking calls, correct? I can't make a standard HTTP request within my microapp if I, for example, wanted to just call another ZI API directly? (In my case the Agentic Platform: agentic-ai-platform.zios-apps-primary.prd.zi-int.com) ?
+
+Keegan Cantrell  [1:50 PM]
+Very low priority ask but do you guys have more UI libraries besides the MUI (what I saw packaged) available? (Like a shadcn for example)
+
+Chris Savage  [2:00 PM]
+Hi, can I get staging access?
+
+Corey Saksik  [2:20 PM]
+General quality request / question - can we get a library of tool schemas to grab as needed (and as new tools / capabilities are introduced) to use within a microapp?  Or could it come pre-loaded with them when initializing?
+
+Easy enough to grab them, but wanted to throw that out there as more folks begin to use it
+
+Zach Day  [3:44 PM]
+hey team - I'm trying to use the Salesforce API in staging but it doesn't look like there is a salesforce integration that exists in staging if I'm see that correctly? NVM I figured this out (getExecutionContext) (edited) 
+
+Ashish Goyal  [7:58 PM]
+Hello @william.talleur / @jack.avina,
+I need to add the following SVP and their team members to the Procurement Intelligence Agent (previously enabled for ELT last month).
+Question: I understand we can create our own workspace and add people directly. Should we be following that self-service mechanism to grant access to agents, or do you still need to handle this centrally?
+Users to be added:
+	•	dennis.sevilla@zoominfo.com
+	•	filip.kapelac@zoominfo.com
+	•	magali.ramirez@zoominfo.com
+	•	carson.wood@zoominfo.com
+	•	matthew.degruttola@zoominfo.com
+	•	rachel.stone@zoominfo.com
+	•	seth.smith@zoominfo.com
+	•	chad.grube@zoominfo.com
+	•	christian.russ@zoominfo.com
+	•	will.weghorst@zoominfo.com
+	•	caleb.maxson@zoominfo.com
+	•	jana.potic@zoominfo.com
+	•	ryan.kim@zoominfo.com
+cc: @mark.johnson
+thanks
+Raghuram Parthasarathy  [8:11 PM]
+Hey team, Is it possible to retrieve a specific dist file (the last working version I had) that was previously uploaded to the microapp library? My local version history was somehow erased from VSCode, and the current build seems corrupted. Hoping to recover that earlier version as a final attempt before rebuilding. (edited) 
+
+
+
+Russell Levy  [10:00 AM]
+for those using the staging environment, can someone explain here why that is needed vs having dev / stg / prod versions of micro apps in dev / stg / prod workspaces on prod?
+
+e.g. if you were building this on Vercel, you wouldn't be connecting to vercel's staging environment to deploy
+
+
+
+Zach Day  [9:55 AM]
+hey team - has anyone been able to get the big-query tool to work? getting 500 errors when I try to run a simple call I was using a local csv, its working for me now  (edited) 
+
+Blaine Browning  [1:09 PM]
+Potentially dumb question, but is there a way to get CLINE the ability to access our MCP server and tools so that it can test queries while building?
+
+Ashish Goyal  [3:35 PM]
+Hi @william.talleur @jack.avina @russell.levy,
+For the contract reconciliation project, I received the API details from @raphael.cohen for invoking the agent. However, I need assistance setting up a user account that we can use in our  orchestration to invoke the agent programmatically.
+I understand most of the team is out of office today. Given that this is a priority item with a November 19th go-live deadline, is anyone available to connect today to help unblock this?
+Alternatively, if there's documentation or another team member who can assist with the user setup and authentication requirements, please let me know.
+Ashish Goyal  [3:35 PM]
+cc: @madhu.panneerselvam
+
+
+
+Zach Day  [10:23 AM]
+@william.talleur are there plans to update micro-app-core to support mui 7? locally I can use it but it breaks if I try and update my app in staging
+
+Blaine Browning  [11:58 AM]
+Is there a timeline for data persistence?  A couple people on my team are working on solutions that require this, and I'm trying to decide if I should push them to wait or build with Snowflake tables in our analysis Schema and then refactor later. cc @chris.savage @prescott.thompson
+
+Raghuram Parthasarathy  [2:42 PM]
+Team, I’ve built a microapp via Tableau vdl_query_datasource tool. The implementation is functioning as expected, but I’ve encountered a Content Security Policy (CSP) issue.
+
+Situation:
+ The Tableau tool returns large datasets (≈70K rows, 9.3 MB) by offloading them to S3 with presigned URLs for client download. The microapp successfully retrieves the S3 URL but cannot fetch it due to CSP restrictions:
+violates the following Content Security Policy directive: "connect-src 'self'  http://localhost:3000 https://chat-service.zoominfo.co https://zoominfo-chatbot-service.zi-ext.com https://zoominfo-chatbot-service.zios-apps-primary.stg.zi-int.com https://zoominfo-chatbot-service.zios-apps-primary.prd.zi-int.com". The action has been blocked.
+Question:
+ Is it possible to add the following S3 domains to the CSP connect-src directive?
+	•	https://s3.amazonaws.com
+	•	https://ecs.ede.prd.zi
+
+
+Context:
+ The Tableau Published Data Source is powered via Postgres (not in Snowflake), so the Tableau integration is currently our only access path. Please let me know if CSP modification is feasible or if I should proceed with another approach.
+Corey Saksik  [4:27 PM]
+Getting some differing issues / errors between prod and staging for the same app build - any maintenance or other issues going on that would cause this?
+
+Zach Day  [10:59 PM]
+silly question but do we have the ability to audit/change the persona of Cline? I know it's sonnet running but I'm finding its lacking some of the sharpness I get with my persona attached in ZI chat - might just be missing something
+
+
+
+Pavan Kumar Yadalam  [3:49 AM]
+Hello Team ,
+Please provide the access to create the microapps ,agents in the ZI -chat production environment (Workspace :Corporate Engineering -G&A -Enterprise technologies )
+
+Pinned by
+William Talleur  [5:45 PM]
+@here Hi team, I'm happy to share our latest Microapp SDK release (v1.0.10). Please follow this guide to update and get access to these new features!
+
+Agent Discoverability & Execution
+These methods were released a few weeks ago but not formally announced, you can now build agents on our platform and execute them from your microapps!
+	•	getAgents()
+	•	getAgent(agentId: number)
+	•	executeAgentAsync()
+	•	executeAgentSync()
+
+
+Content Security Policy Updates
+	•	Embedding images is now allowed (img-src)
+
+
+Get Execution Context
+Execution context provides a way to access information about the user, environment and settings your micro app is currently running under.
+const result = await apiClient.getExecutionContext();
+if (result.success) {
+  setData(result.data);
+} else {
+  setError(result.error);
+}
+Response (result.data from above):
+{
+  "microAppId": 1,
+  "sessionId": "8027a345-ef06-469f-9049-a1de0ba10c40",
+  "baseApiUrl": "https://zoominfo-chatbot-service.zios-apps-primary.prd.zi-int.com",
+  "locale": "en-US",
+  "timeZone": "America/Detroit",
+  "user": {
+    "name": "John Doe",
+    "email": "john.doe@zoominfo.com",
+    "ziUserId": 10000000
+  },
+  "env": "production",
+  "chatUrl": "https://chat.zoominfo.co"
+}
+
+
+Get Microapps
+This method allows you to get a list of micro apps that you can see. Typically you won't need this method, but a team has asked for it so they could build a microapp catalog of their apps.
+const response = await apiClient.getAvailableMicroApps();
+if (result.success) {
+  setData(result.data);
+} else {
+  setError(result.error);
+}
+Response (result.data from above):
+[
+  {
+    "id": 1,
+    "name": "My MicroApp",
+    "description": "A really cool micro app.",
+    "url": "https://chat.zoominfo.co/micro-apps/1/1",
+    "createdBy": "John Doe"
+  }
+]
+
+Pinned by
+William Talleur  [5:55 PM]
+ Additionally, now that microapps have been generally available in our production environment for one month, we will not be granting new user access to our staging environment starting today in an effort to centralize microapp development/deployment and provide better support to our community of builders. The staging environment was temporarily utilized to roll this platform component out but is not suitable for long-term development, deployment and sharing of microapps due to it's sometimes unstable nature and drift from production (e.g. integrations/tools available).
+
+ Please spend time in the coming weeks to move your microapps into the production environment, leaving them "private" if you are still in dev/test and don't want other users to see them. We appreciate your support on this and are thrilled that over 100 microapps have already been built and deployed! Looking forward to seeing what you continue to build! (edited) 
+
+
+
+Cooper Robertson  [10:32 AM]
+Since the update (could be unrelated), I haven't been able to execute the command "npm login"
+Error messages in thread
+Prescott Thompson  [2:05 PM]
+Are we able to assign User's roles for our MicroApps? Thinking about something like Role Based Access Control.
+
+Julie Sarmiento  [2:24 PM]
+Hi team, I am building a microapp that reads a pdf file and parse it. cline used a tool that won't run in the environment. It has this error "Failed to parse Bank file: No "GlobalWorkerOptions.workerSrc" specified."  If I use an agent and upload the file, the agent can parse it. What tool in the microapp should I use to parse a PDF file? Thank you
+
+ZI Chat  [9:52 PM]
+Message sent on behalf of @bhuvnesh.gupta:
+
+May I please get access to the ZI Chat staging environment?
+
+ZI Chat  [10:19 PM]
+Message sent on behalf of @bhuvnesh.gupta:
+
+May I please get access to the ZI Chat staging environment?
+
+
+
+Prescott Thompson  [9:02 PM]
+Is this warning something we should worry about after running npm run build ?
+
+image.png 
+
+
+
+Harish Tamilarasan  [9:42 PM]
+Hi team, is there a way to fetch the user’s name, email, department, and location within Microapps? Can we run any query to retrieve these details?
+
+
+
+
+Pinned by
+Bhuvnesh Gupta  [10:19 AM]
+Microapp SOPs Application Now Live in Production
+I'm pleased to announce that the Microapp SOPs application is now live and accessible through ZI Chat.
+Access: https://chat.zoominfo.co/micro-apps/80/262
+What it is: A comprehensive resource hub that enables anyone at ZoomInfo—regardless of technical background—to build functional microapps for ZI Chat. The platform features AI-powered "Vibe Coding" where you simply describe what you need, and the system generates the code automatically.
+Key capabilities: • Structured development journey from setup to deployment • Complete documentation covering foundation, security, UI/UX, and Git collaboration • Video tutorials and interactive tools
+Full details: See attached release note
+Questions or feedback? Feel free to ask in #ai-coe-microapp-sops channel. We'd greatly appreciate your feedback to help us continuously improve the Application and make it more user-friendly.
+
+PDF 
+
+MicroApp SOPs Release Note.pdf
+PDF
+
+Jeff King  [10:27 AM]
+Hi team - just  brainstorming so many not be possible.    Is it feasible for a microapp to be created whose only purpose would be to create other microapps?  Guides like the one above should remove alot of barriers but if it were feasible was thinking we could remove the tool setup barrier entirely.   cc: @cooper.robertson
+
+Prescott Thompson  [11:09 AM]
+Hi team, just thinking out loud here. Is my Microapp able to edit an agent?
+
+Kevin Brown  [2:53 PM]
+Hello team, I am trying to create a Jira story summary board. microapp and running into trouble. I have run into issues querying the correct data, as it shows samples instead of real-time data, but when I click view in Jira, it takes me to a link in Jira.
+
+2025-11-17_13-51-10.png 
+
+
+
+Julie Sarmiento  [12:15 PM]
+hi team, i am creating a report for Tax team and using the tool dbt-run_sql_query in the microapp. the report has a line item of 173,000 but the tool has a limit of 10,000. Is there any tool that i can use without the line item limit? i tried also batching, but it gave me a different result. Thank you. Cc @liang.yang
+
+Keegan Cantrell  [2:55 PM]
+Has anyone had experience trying to pull joined reports from SF? Any issues there? The tools work great for reports in SF and SOQL too, but I am wondering where it's going to break on joined reports
+
+
+
+Liang Yang  [9:39 AM]
+Hi team, getting below error. Any suggestions?
+
+image.png 
+
+
+
+Keegan Cantrell  [3:33 PM]
+Team, when will microapp data be added to the analytics tabs? @scott.morrison and I are tracking adoption but can't see microapps which have had a lot of recent usage vs chat
+
+
+
+Zach Day  [5:55 PM]
+q here - tool calls without -service- work in dev but in prod they need -service-?
+
+William Talleur  [6:07 PM]
+unfortunately we've had some connector/tool naming drift between dev/staging and prod, this is why we're making an effort to push everyone working with microapps onto production for better reliability.
+
+
+
+Sam Darcy  [12:08 PM]
+Hey team!
+
+I am trying to use that new callZoomInfoApi method in staging but I instantly get back an empty result object.
+
+Here is what my call looks like:
+
+try {
+    const tenantId = '2d02f6df-c027-4f76-8957-01dad8b9bb74';
+
+ 
+    const url = 'https://agentic-ai-platform.zios-apps-primary.stg.zi-int.com/interact/VoiceOfCusto
+  merAgent?stream=false';
+
+    // Generate unique IDs for thread and interaction
+    const threadId = crypto.randomUUID();
+    const interactionId = crypto.randomUUID();
+
+    const requestBody = {
+      thread_id: threadId,
+      interaction_id: interactionId,
+      message: analysisIntent.expanded_query,
+      structured_content: {
+        agent_props: {
+          tenant_id: tenantId,
+          time_window_days: timeWindowDays,
+          similarity_threshold: similarityThreshold,
+          enterprise_only: enterpriseOnly
+        }
+      }
+    };
+
+  
+    const response = await (apiClient as any).callZoomInfoApi(
+      url,
+      'POST',
+      {
+        data: requestBody,
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'x-access-token': (apiClient as any).accessToken
+        }
+      }
+    );
+
+
+I am essentially trying to recreate this working CURL:
+
+ curl -X POST 'https://agentic-ai-platform.zios-apps-primary.stg.zi-int.com/interact/VoiceOfCustom
+  erAgent?stream=false' \
+    -H 'Content-Type: application/json' \
+    -H 'x-access-token: eyJraWQiOiJvSGdvWmIyLWxyXzFXM2prS1VzN2t0Z1BfQ1BWOEdFRGY1cXNHaFM1dTRZIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULnVMVmd4ZXVVRFp3RGVLUUNVMGFuaHR2cUM5aGFZT0o3MDFGYkVnVEJIUlkub2FyMWhmaXR5bVMyekNFVmIxZDciLCJpc3MiOiJodHRwczovL29rdGEtbG9naW4tc3RhZ2luZy56b29taW5mby5jb20vb2F1dGgyL2RlZmF1bHQiLCJhdWQiOiJhcGk6Ly9kZWZhdWx0Iiwic3ViIjoic2FtLmRhcmN5QHpvb21pbmZvLmNvbSIsImlhdCI6MTc2MzY1NTg2NywiZXhwIjoxNzYzNjc3NDY3LCJjaWQiOiIwb2EyMjRrb3p3Z1pUcEpDTTFkNyIsInVpZCI6IjAwdW9odGowZ2cxRVFoY1ZlMWQ3Iiwic2NwIjpbIm9mZmxpbmVfYWNjZXNzIiwib3BlbmlkIiwiZW1haWwiLCJwcm9maWxlIl0sImF1dGhfdGltZSI6MTc2MzY1NTg2NiwibGFzdE5hbWUiOiJEYXJjeSIsInppU2Vzc2lvblR5cGUiOi0zLCJ6aUdyb3VwSWQiOjAsInppQ29tcGFueVByb2ZpbGVJZCI6IiIsInppUGxhdGZvcm1zIjpbIkdUTSBBRE1JTiIsIkRPWkkiXSwiemlBZG1pblJvbGVzIjoiIiwiemlVc2VybmFtZSI6InNhbS5kYXJjeUB6b29taW5mby5jb20iLCJmaXJzdE5hbWUiOiJTYW0iLCJ6aVJvbGVzIjoiM3UvOC8vOTlxZi9mLy80RjhuVU5iZDhiMEFDWUlLSDhud0VBRkFBZ0FBQUFXQUFBQkFBQUFBQkFBTWNMeW1RUEFBQVFjQmtBd1FCQSIsInppVXVpZCI6Ijc3MGY1NmI0LTA5ZjMtNGZkOC04ODZmLTQ1ZWFiMzUwOTdkMyIsInppVXNlcklkIjoyMDExNDAwMSwic2ZDb250YWN0SWQiOiIwMDNPdTAwMDAwWkpkYWdJQUQiLCJ6aUluYWN0aXZpdHkiOjYwNDgwMCwibm9Db3BpbG90V1NBY2Nlc3MiOnRydWUsInppVGVuYW50SWQiOjEwMDI5MTYxLCJlbWFpbCI6InNhbS5kYXJjeUB6b29taW5mby5jb20iLCJzZkFjY291bnRJZCI6IjAwMU91MDAwMDBRVmgzUklBVCIsInppTW9uZ29Vc2VySWQiOiIyMDExNDAwMSJ9.uab9LEWAuppTLR_V4szJtCaxRUdc_xP5jq13lPOR2gM3VYOIpkWqJkyIUXBSLJsL6-khEPCiGyJUvpa_OzfTNIiXXhCTlXHQcxfyFeuu2aoSkwUwSDicSV2naE8I6tfMHZrOWO5UgDtwDMs62zNvCsm4wLxsB8L0iqNF_mL8XeUIpvHua3upMw-E9WI97o5pJOkhjJwa1ha2natNUb1TPljwfucj8U22LMbq4FK6TecLQrGd1MU_OtpsABNBVSs9-ihF_xHU7ybfxxjJwT7TGXpcCQlcCUKCJcSJh8NGVIhYKffKql6vMBHY28XhQ1JuzSuZVhY3yrIdHi2UFuJvBg' \
+    -d '{
+      "thread_id": "550e8400-e29b-41d4-a716-446655440000",
+      "interaction_id": "660e8400-e29b-41d4-a716-446655440001",
+      "message": "What do our customers think of our data quality?",
+      "structured_content": {
+        "agent_props": {
+          "tenant_id": "2d02f6df-c027-4f76-8957-01dad8b9bb74",
+          "time_window_days": 90,
+          "similarity_threshold": 0.3,
+          "enterprise_only": false
+        }
+      }
+    }'
+
+
+Is there anything in that implementation that jumps out as a problem/malformed? (edited) 
+
+Keegan Cantrell  [7:27 PM]
+Shadcn UI migration with a little tasteful glass transparency. 
+
+Now that the function is there I had a chance to update some aesthetics. 
+
+Also more extensible with the components and it cut my code down a lot.
+
+Thought some people might enjoy a less technical post.
+
+Also shout out to the ZIChat team in general for a beautiful UI redesign, which inspired me too.
+
+Screenshot 2025-11-24 at 4.24.58 PM.png 
+
+Keegan Cantrell  [7:28 PM]
+The tech debt was real though and I spent more time than I would like to admit fixing the look and feel. 
+
+Harish Tamilarasan  [11:43 PM]
+Hi team,
+
+Is it possible to schedule periodic queries? My Microapp needs to fetch some information by joining a few tables, but the final output is only a small set of columns and rows, and the data doesn’t change often. The data is also not user specific. To improve performance, it will be better to run the query at scheduled intervals once few days and update the info in the microapp source directory itself, like storing them in a file, and load them into memory by reading the file once the app starts. (edited) 
+
+
+
+Harish Tamilarasan  [10:16 AM]
+Hello team, is it possible to revert the app to old state despite updating build.zip?
+
+Manjusha Nair  [10:34 PM]
+Hi Team, Is there a monthly limit on usage? Getting below error in cline
+{"message":"412 Reached monthly spend limit for API key","status":412,"
+
+
+Zach Day  [3:11 PM]
+has anyone been able to successfully run get-agent and return an html result in a microapp? running into true executions but no results returning from the agent and wonder if i'm missing something
+
+
+
+Harish Tamilarasan  [2:04 AM]
+Team,
+
+Facing Invalid Token issue frequently when calling an agent from Microapp.
+{
+    "code": "HTTP_ERROR",
+    "title": "UnauthorizedException",
+    "detail": "Invalid token",
+    "errorMessages": []
+}
+Harish Tamilarasan  [9:59 AM]
+Team,
+	1	Is it possible for the executepromptsync function to support tools such as web search and Snowflake table queries? At the moment, I am using agents to run these tools and then calling the agent from the microapp.
+	2	Also, Microapps currently does not allow calling one agent from within another agent. Because of this, I am having to manually create prompts or custom logic to coordinate between multiple agents. Is there a way to take the output of one agent and pass it as context to another agent within the same flow?
+I wanted to check if these use cases fall within the intended scope of Microapps, or if they are considered outside what the platform is designed to support.
+
+Zach Day  [10:03 AM]
+@russell.levy I had a q on this as well - whats the api call to prompt agents with zi chat? I can't get it to work
+
+Arijeet Mukherjee  [12:46 PM]
+@jack.avina @william.talleur - For Micro Apps can we have a functionality to automatically checkin the code for the app to git repo so that we can version control it?
+This would be needed as otherwise we would have no clue on what changed by user A for a Micro App when handing it over to User B.
+cc: @jered.little @raviv.knoller@taylen.ceccacci (edited) 
+
+
+
+Guna Kalluru  [6:01 AM]
+hi Team ,
+Not sure why this issue in both Prd/stg (i checked with few colleagues by uploading same ZIP file ,and this happening only for me)
+
+	1	Tried by refreshing the page and Reopening the MicropApp/ ZI chat App many times
+	2	Same ZIP file is working, if others upload it
+my random guess: Will it be due to Over refresh/usage of ZI Chat Microapp? (edited) 
+
+Screenshot 2025-12-04 at 4.25.46 PM.png 
+
+Guna Kalluru  [10:45 AM]
+This might help in Debugging above Issue(Microapp not found) (edited) 
+
+Screenshot 2025-12-04 at 9.14.34 PM.png 
+
+Corey Saksik  [3:26 PM]
+Any known issues with microapps going on?  Microapp space is just spinning for me, everything else is working, though
+
+William Talleur  [3:28 PM]
+hotfix landing at the moment which may be causing a brief disruption
+
+Brendan Powers  [3:51 PM]
+I'm running into issues getting my comp setup to create microapps. I followed the directions in the confluence but am getting stuck with this error
+
+image.png 
+
+
+
+Corey Saksik  [11:22 AM]
+Did anything change with the Atlassian MCP?  My app is not pulling results today and was yesterday, tried disconnecting / reconnecting the auth
+
+William Talleur  [11:33 AM]
+we did deploy a new version with some bug fixes for jira search. which tool is failing?
+
+
+
+Prescott Thompson  [11:01 AM]
+Hi Team! I have a specific use case for creating a sign-off for a accounting control. It would involve a user of the microapp uploading a screenshot. I tried to do is by having the image post to a Google Slide by uploading the image to Google Drive and linking it to no avail.
+
+Any ideas on what I could do within the confines of the current implementation or will I have to wait until more features are added? (edited) 
+
+
+
+Prescott Thompson  [9:52 AM]
+Howdy team! One of my users is running into an error "Error calling tool 'run_sql_query'" and I have tried to implement a fix within the microapp to no avail. Is it possible that this user is experiencing a tool error within their chatbot and if so how could I tell if that was the issue?
+
+
+
+Manjusha Nair  [7:18 PM]
+Hello team, Is Requesty down? I am getting below error. I regenerated a new key but still getting the error.
+[REQUESTY] Connection error.
+{"message":"Connection error.","modelId":"google/gemini-3-pro-preview","providerId":"requesty"}
+
+
+Dimple Agrawal  [5:33 AM]
+Hello Team, I need help integrating Salesforce with a micro app to enable record creation.
+
+
+
+Raghuram Parthasarathy  [12:07 PM]
+Hi Team: As mentioned previously, I need a Content Security Policy update for the AI Credits Dashboard microapp to enable data downloads from our S3 bucket.
+
+Issue: The microapp successfully queries Tableau via VDL and receives a ~40MB dataset, but the browser blocks the S3 download due to CSP restrictions.
+
+Error:
+Refused to connect to 'https://s3.amazonaws.com/ecs.ede.prd.zi/...'
+because it violates the Content Security Policy (connect-src)
+Requested change:
+ Please add the following to the CSP connect-src directive:
+https://s3.amazonaws.com
+or preferably:
+https://s3.amazonaws.com/ecs.ede.prd.zi
+Why this is needed:  Large query results are returned via signed S3 URLs. Without this CSP update, the microapp can’t download the data.
+
+Microapp Link
+
+Thanks!
+
+cc: @william.talleur, @russell.levy
+
+Screenshot 2025-12-17 at 12.05.30.png 
+
+Blaine Browning  [2:54 PM]
+Did something happen with permissioning?  Someone on my team accidentally hit Edit instead of view (I presume something changed with UI), but I didn't think she should have been able to hit edit.
+
+Joey Boudreau  [4:02 PM]
+I have a microapp that was working previously, but now am running into this error:  All of my integrations are working, it it when i call the api
+[3:53:36 PM] Calling AI API to generate evaluation...
+[3:55:41 PM] ✗ API returned error response
+[3:55:41 PM] ✗ API response contains HTML error page
+[3:55:41 PM] ✗ Error: The API returned an HTML error page instead of a valid response. This typically indicates:
+
+• Authentication/authorization failure - Check your API credentials
+• API rate limiting - You may have exceeded request limits
+• Service unavailability - The API service may be down
+• Network/proxy issues - Connection may be blocked or intercepted
+
+Please verify your API configuration and try again. If the problem persists, contact your administrator.
+Enable "Show Logs" for more technical details.
+(edited)
+
+
+
+Harish Tamilarasan  [10:06 PM]
+Hi team,
+Is there a supported way to share a Microapp link with a specific state preserved?
+For example, if filters are applied, we’d like to share a view where those filters are already active. I tried appending query params of the filter data to the parent URL, expecting them to be passed down to the iframe via baseApiUrl, but as expected it looks like baseApiUrl always resolves to the direct Microapp URL without any additional params. https://chat-service.zoominfo.co/api/v1/micro-app-file-server/ddb89669-d5fc-4985-976e-53c396f1b1f1/?sessionId=ddb89669-d5fc-4985-976e-53c396f1b1f1&baseApiUrl=https%3A%2F%2Fchat-service.zoominfo.co
+As a workaround, we’re thinking of either:
+	•	Handling shared URLs as field within the app itself to get the filters, or
+	•	Saving filters in the snowflake and providing a dropdown to view saved filters.
+Just wanted to check if there’s any existing or planned support for deep-linking / stateful URLs for Microapps before we proceed with a custom approach. Or are there any other ways to do this. (edited) 
+
+
+
+Guna Kalluru  [6:51 AM]
+Hey Team,
+I can see the Edit button in our Application is Disabled
+	1	It was Working Earlier
+	2	No changes made later that
+	3	Probably we can fix it .But,Looking for why it happened
+is this cause of new upgrade for ZI Chat?
+
+Screenshot 2025-12-19 at 5.10.41 PM.png 
+
+Rebecca Sherman  [10:16 AM]
+Hi all, I have an access question. I have an intake microapp that uses a private agent. We've tested it in our workspace and it worked (for someone other than the app owner) with the private agent. Now the app is open to organization, will the agent still power the app when it's called from outside the workspace? (edited) 
+
+Zach Day  [12:24 PM]
+https://code.visualstudio.com/docs/copilot/customization/agent-skills !!
+
+
+code.visualstudio.com
+Use Agent Skills in VS Code
+Learn how to use Agent Skills in VS Code to teach GitHub Copilot specialized capabilities that work across VS Code, GitHub Copilot CLI, and GitHub Copilot coding agent.
+
+https://code.visualstudio.com/docs/copilot/customization/agent-skills
+
+Zach Day  [12:25 PM]
+@william.talleur @russell.levy any thoughts on a shared library of skills for ZI?
+
+Harish Tamilarasan  [9:14 PM]
+Hi Team, 
+We are building a set of reusable utility features that can be shared across multiple microapps - for example, a feedback form that captures user input and stores it in a centralized snowflake database. Currently, the app owners are manually copying the code folder into each microapp. We would like to have package based approach for these utilities which will be maintained by us. Please let me know if this is feasible and the best way to proceed.  (edited) 
+
+
+
+Brendan Powers  [3:31 PM]
+How do I find the UUID needed to use the microapp refinement tool?
+
+
+
+Cole DiForte  [11:30 AM]
+Hi team, I'm getting this error when I try to run my MicroApp that I update weekly.
+
+[REQUESTY] 403 Invalid authorization token
+{"message":"403 Invalid authorization token","status":403,"modelId":"anthropic/claude-sonnet-4-5","providerId":"requesty","details":{"origin":"router","message":"Invalid authorization token"}}
+(Click "Retry" below)
+
+Do I need to get a new API key from requesty? Appreciate the help
+
+
+
+Mark Johnson  [8:10 AM]
+I have some contractors (with ZI credentials) I want to add to a Workspace in chat, but it looks like they are not available for selection.  Can someone please let me know what I need to do to get them access?
+
+Julie Sarmiento  [2:10 PM]
+Hello, i have some question regarding accessing the microapp. before they were able to run the Microapp just by clicking the link, but now it shows an error {
+    "requestId": "78inph6r",
+    "code": "HTTP_ERROR",
+    "title": "NotFoundException",
+    "detail": "Tool not found: dbt-run_sql_query",
+    "errorMessages": []
+}.   when we tried to open the app via the Zichat and clicking the app, it works. is there a difference when accessing via a link vs opening in the Zichat then going to Microapps? (edited) 
+
+
+
+Prescott Thompson  [5:04 PM]
+What are the limits on the data storage?
+Which tool interacts with it?
+How much can be stored?
+image.png 
+
+
+
+Adam Santone  [2:47 PM]
+Hi team, I'm trying to use Cline inside VS Code and it's asking me to login (..."Please sign in to Cline...") and when I try to do that I get "Access blocked, please contact your admin" even when I try the Sign Up option. Any ideas on how to proceed or check on this? Thanks.
+
+
+
+Harish Tamilarasan  [11:09 PM]
+Hi team, Is there anyway to find if the logged in user is the owner of the app. Need to create an Admin related page for owner alone.
+
+
+
+Adam Santone  [11:35 AM]
+Hi team, I created a microapp and uploaded the initial .zip file but when trying to update with a new .zip file, I get Failed to update microapp. Please try again. So, the View version is the old one and the Develop version is the new one and I can't seem to get the new zip file accepted to replace the current one in the Configuration tab. Any idea why? Thanks
+
+
+
+Mark Johnson  [9:00 AM]
+Hello team.  Trying to start up and work on an app in http://localhost:5173.  I have a working version deployed, but I need to do some work on it.  I am getting this response from the browser.  I have tried to troubleshoot with Cline and and running in circles.  Any ideas?
+
+Screenshot 2026-01-06 at 7.30.42 AM.png 
+
+Zach Day  [10:51 AM]
+has anyone had success exposing Chorus meetings to a microapp? Im running into pretty consistent issue with results, user session mapping, transcript ids, etc - im not sure if this is a tool issue but the tool results are not translating like they do in Chat
+
+
+
+Heather Ong  [4:15 PM]
+My JFrog token authentication keeps failing with E401. Can someone help me get set up to install @zoominfo-chat/micro-app-core?
+
+
+
+Zach Day  [11:29 AM]
+@william.talleur can we use our Anthropic API keys in claude code? do we have pre-built org in anthropic dev? mixing up my ide usage and wanted to try something other than cline
+
+Taylen Ceccacci  [12:15 PM]
+Hello, any thoughts on what could cause this "network error" when running new Agent evaluation?
+
+Screenshot 2026-01-08 at 9.13.20 AM.png 
+
+Zach Day  [7:17 PM]
+@william.talleur do our API keys translate into the Claude ext for Chrome? or have we thought about that ext for UI/UX dev?
+
+
+
+Derek Tran  [2:36 PM]
+Hi, I am getting the error below when trying to use Cline.  What could be the problem?  Do I need a new key?
+
+image.png 
+
+
+
+Jessica Buchwald  [5:06 PM]
+Hey team! Were there updates made to the API for executing agents from microapps? I'm getting 400 errors now on an application that used to work
+
+Zach Day  [5:52 PM]
+@william.talleur any changes to our artifactory? Im getting an ECONNRESET error that wasn't happening 24 hours ago
+
+
+
+Richie Brumfield  [1:23 PM]
+Hi team, I thought I had access to JFrog but I am getting the following message when attempting to authenticate. Does this mean I need to request access?
+
+Screenshot 2026-01-13 at 1.18.40 PM.png 
+
+Zach Day  [3:17 PM]
+hey team - I'm trying to delete a microapp from my local and am running into an AzureAD issue - known? anything I need to do to offload this?
+
+
+
+Jessica Buchwald  [9:40 AM]
+Hey team! A two fold question:
+
+	1	My API Key in Cline was working fine on Friday but now I'm getting the following error (image)
+	2	The API Key was created in the Anthropic "Product Management - Growth Operations" workspace where we have API keys also created for some of our process automations. I used to be an admin so I could track spend/key usage, but it looks like I've been removed. Is there a new way we're doing keys? Want to make sure I'm following the process and that we get any make.com/zapier keys adjusted if needed
+2 files 
+
+
+
+Zach Day  [4:03 PM]
+@william.talleur SF work still going on? API connector is failing still
+
+William Talleur  [4:03 PM]
+yeah we're struggling to fix - stay tuned
+
+Yogesh Kudallur Hariharasuthan  [9:40 PM]
+Hello Team,
+ I'm using VS and Cline is installed. I created few mcp servers and Till Monday Cline was connecting and I was able to execute. Starting Yesterday Tuesday Cline and MCP server is not getting connected.
+Tried restarting multiple times and still the same issue.
+ Is there any generic issue or is the issue from my end. (edited) 
+
+
+
+Julie Sarmiento  [1:40 PM]
+hi Team, i am using Vscode/Cline/Requesty and i noticed that cline is looping in reading a file, I also experience during pst working hours that cline is slow in reading a file (just 100 lines) and slow in giving a result. It also sometimes doesn't do well even though it already created a task list in Plan mode and when i shifted to Act mode it will be slow and sometimes do something else. is there a way to solve the issue? thank you
+
+image (30).png 
+
+Prescott Thompson  [8:14 PM]
+I have a microapp that is making DB Snowflake updates at the rate of 1 update per 2 seconds. (30 SQL calls/min)
+
+The total population is 544 updates and I would expect this operation to take ~18 Minutes.
+The operation takes around ~45 minutes when tested in the wild.
+
+If I change the limiter on either one (for example, 2 updates or 1 second) it rate limits me.
+
+Any thoughts?
+
+
+
+Harish Tamilarasan  [8:24 AM]
+	1	When we use the ZI Chatbot, ZI branding is getting applied for the presentation which looks super clean. Can we have these branding instructions as .clinerules too like a branding.md file. Currently I have to manually include branding info for the microapps.
+	2	Also in 03-tool-schemas.md, We are asking to navigate to "https://zoominfo-chatbot-ui.zi-ext.com/" to copy the tools call schema and paste it. This link doesn't work anymore.
+	3	Even when fetching the tool list and schema from https://chat-service.zoominfo.co/api/v1/organizations/37/tools, the response exceeds 20k lines. This feels a bit too much to give as instructions. Sometimes, as the app grows I noticed the cline even forgets what is there in clinerules and does its own things and we have to direct it again via prompts.
+(edited)
+
+Mark Johnson  [1:02 PM]
+I have a micro-app that reads from a google spreadsheet.  Some of the cells contain links to google docs and some to google folders.  When I click on the link from within the app for the docs, they open fine.  When I click to open a folder, I get the attached message.  Is this capability not enabled (or specifically disabled) in the micro-app?
+
+Screenshot 2026-01-23 at 12.01.49 PM.png 
+
+
+Pinned by
+William Talleur  [3:14 PM]
+@channel Hi team! Over the last month we've been building some powerful new capabilities to expand the Microapps platform and we're excited to announce them today. A special thank you to @danny.myers and @jered.little for their incredible work in this release.
+
+	•	Development Mode: this allows you to run develop your application side-by-side with your production one in the same workspace, with access to the same tools/data.
+	•	Deep Linking: when set up, you will be able to store "state" in the address bar.
+	•	Snowflake Data Store (EA): this gives your application access to write custom queries + manage your own data in Snowflake. This capability is now in early access testing and we're excited to hear your feedback. Send us a message in this channel if you'd like access.
+	•	Postgres Data Store (EA): this gives your application access to a database where you can store microapp specific data without resorting to weird tooling hacks. This capability is now in early access testing and we're excited to hear your feedback. Send us a message in this channel if you'd like access.
+	•	User List: you can get a list of the currently available ZI Chat users with apiClient.getUsers().
+
+
+The template that ships with create-micro-app has been updated to show the above features. Just run the below commands:
+npx @zoominfo-chat/create-micro-app <your-micro-app-name>
+npm install
+npm run dev
+
+
+How to upgrade:
+Follow the steps here and then re-deploy your application.
+npm update @zoominfo-chat/micro-app-core
+We highly recommend you copy the latest 01-coding.md file over your existing one as it will help Cline understand how to use the newest APIs.
+
+ Upcoming Breaking Changes  
+We modified the apiClient.callZoomInfoApi to have a more consistent API and will be deprecating our legacy endpoints on February 13th, 2026. If your application is making this call, you will need to slightly tweak your handling of the response after running npm update @zoominfo-chat/micro-app-core
+
+ Required Staging Migration 
+We're following up on an ask from a few months ago to migrate your Microapps from our staging environment to production environment. We'll be disabling access on February 13th, 2026.
+
+	1	We now have developer mode, so when you work on your MicroApp on production, you have access to exactly the same set of tools that your users have access to.
+	2	Our staging environment is where we develop new functionality and we're going to be making some massive changes over the next month or two that will impact the stability of your development experience.
+
+
+You shouldn't need to do anything to migrate to production outside of click on the green Develop button for your micro app.
+
+Please let us know if you have any questions or issues, and thank you for using the Microapps platform to build at ZoomInfo! (edited) 
+
+Corey Saksik  [4:55 PM]
+@william.talleur I would love to try out both Snowflake and Postgres - both could be hugely beneficial for an app I'm working on
+
+
+
+Prescott Thompson  [10:10 AM]
+Do we have a MUI styling guide?
+
+Harish Tamilarasan  [10:50 PM]
+@william.talleur @danny.myers — Deep state linking is very useful, thanks for building this feature!
+ Would it also be possible to read params directly from the URL? That would allow us to dynamically set the page (for example, initialize filters from URL params).
+
+
+Brahmjot Singh Kohli  [12:35 AM]
+Hi @william.talleur @jered.little - could you help us get on the preview/beta for the Snowflake integration in the microapp. We are testing/building an ROI microapp in the ZI Chat per @russell.levy’s suggestion, and wanted to test this out with a Snowflake view:
+cc: @arun.v @manu.pari @vimlesh.kumar (edited) 
+
+image.png 
+
+Pallavi Sinha  [5:16 AM]
+Hi Team, I dont see any options when I click <>develop. It does appear to initialize but the screen goes blank like this.
+Not sure if I did something wrong. Could someone please help me fixing this?
+image.png 
+
+Zach Day  [2:57 PM]
+@william.talleur can we call microapp snowflake tables from zi chat agents?
+
+Zach Day  [9:10 PM]
+just quick heads up for anyone nontechnical working in snowflake - you have to change your role if you don't have the right one selected
+
+image.png 
+
+
+
+Zach Day  [10:49 AM]
+if anyone wants to leverage - i ran into a variety of debugs using the snowflake tools yesterday, so I built a skill out of it to prevent it in the future
+
+snowflake-json-parameters.md 
+# Snowflake JSON Parameters in MicroApps
+​
+## Overview
+​
+This document captures critical learnings from debugging Snowflake JSON parameter handling in ZoomInfo MicroApps. Understanding these limitations will save hours of debugging when working with VARIANT columns.
+Jered Little  [11:50 AM]
+replied to a thread:
+Nice @zach.day! On a similar note with helpful Snowflake hints, if you need to incrementally fetch data from Snowflake (pagination), you can follow this structure: https://discoverorg.atlassian.net/wiki/spaces/CSOI/pages/202075308191/MicroApp+Development+Guide#Incremental-Fetching-Data
+
+This is helpful for large data sets or if you want to render UI elements incrementally. (edited) 
+
+Zach Day  [2:23 PM]
+correct me if im wrong but microapps cannot speak to orchestration yet, correct?
+
+Julie Sarmiento  [4:32 PM]
+Hi @william.talleur can i also have access to both snowflake and postgres data storage? Thank you
+
+
+
+Kristin Gandini  [9:13 AM]
+Hey team, I’m struggling with getting users outside of my team to load a MicroApp I built.
+
+The app uses Atlassian (Jira) and LaunchDarkly tools to create a read-only dashboard. The MicroApp is in the AI Marketing Engine workspace, and the visibility is to the full Organization. Whenever someone outside of my team tries to load it, they get an error message that says they need to check the Jira integration is turned on for them.
+https://chat.zoominfo.co/micro-apps/127/481
+
+I would like to find a way around this, if possible. Has anyone run into similar issues or have workarounds?
+
+image.png 
+
+Prescott Thompson  [12:48 PM]
+Cline has a question:
+
+I need to understand how to interact with the persistent storage API. Can you provide:
+
+1. API Methods: How do I read/write to persistent storage? (e.g., apiClient.setData(), apiClient.getData(), or something else?)
+
+2. Data Format: Can I store JSON objects directly, or do I need to serialize to strings?
+
+3. Storage Limits: Are there size limits per key or total storage?
+
+4. Example Usage: Do you have any existing code that uses persistent storage I can reference?
+
+This will help me design the storage layer correctly for the job queue system.
+
+Posting here since the answers may help others.
+
+
+
+William Talleur  [12:12 AM]
+@saicharani.sannapureddy @namrata.singh @vimlesh.kumar @brahmjotsingh.kohli @arun.v @manu.pari @julie.sarmiento you now have access to postgres & snowflake data storage
+
+Brahmjot Singh Kohli  [2:29 PM]
+HI team - facing couple of issues for the ROI Analytics Enablement Microapp.
+	1	Although we tagged @stephen.antuna and @whitney.littman as 'User' in the Workspace (screenshot 1), they were seeing the app as 'greyed out' and not having the permission to view it. So, I flipped Whitney to an 'Admin' (as we provide these to more GTM team members, don't want to make them admins on this, but keep them as 'Users' only for viewing). The microapp was clickable for her then. However, issue 2 happens then.
+	2	When she is trying to access it, she is getting the 'failed to parse query results' error (screenshot 2).
+Any idea on how to fix both these issues? @william.talleur @arun.v @deepti.koti
+
+2 files 
+
+
+
+
+
+Cam Fortin  [6:25 PM]
+@jack.avina can you help me get access to storage? Wasnt sure who to ask with @william.talleur out on paternity. I have a dashboard I'm excited about and hoping to store stats there to avoid lots of big queries and faster loads (I think that's the right usage pattern here)
+
+2 files 
+
+
+
+
+
+ZI Chat  [11:20 AM]
+Message sent on behalf of @zach.day:
+
+ **LOW USAGE ALERT — Zach Day** (Test Message)
+
+**Portfolio:** 31 accounts analyzed | 1 critical issue
+
+---
+
+##  CRITICAL
+
+**Hewlett Packard Enterprise - Customer Success**
+• 25 seats → 1 provisioned (4%) → 0 active
+• ACV: $31,349 | Contract: 2026-10-31
+• **Action:** Reactivation call required
+
+---
+
+##  MODERATE ADOPTION (2)
+
+**Veritas/Arctera** | $161K ACV
+• 75 seats → 74 prov (98.7%) → 31 active (41.9%)
+
+**HPE - Patty Wright** | $110K ACV  
+• 3 seats → 3 prov (100%) → 1 active (33.3%)
+
+---
+
+##  HEALTHY (28 accounts)
+
+**Top 5:**
+• Snowflake: 1,560 seats | 1,015 active (65.7%)
+• Costar: 534 seats | 490 active (94.8%)
+• Rubrik: 1,010 seats | 528 active (82.1%)
+• SailPoint: 1,050 seats | 230 active (159.7%)
+• ASGN: 110 seats | 118 active (107.3%)
+
+---
+
+**Analysis Period:** Last 90 days (2025-11-05 to 2026-02-03)
+
+Zach Day  [11:21 AM]
+replied to a thread:
+I can't delete the above its just a test! sorry!
+
+Zach Day  [5:36 PM]
+has anyone played around with subagents in cline? (edited) 
+
+Megan Geare  [6:09 PM]
+Seeking access to Snowflake enablement
+
+image.png 
+
+
+
+Danny Myers  [11:39 AM]
+Hi everyone. The MicroApp Snowflake capability is available to everyone now.
+
+Build away!
+
+
+
+Zach Day  [7:20 AM]
+Any thoughts on developing an allowlist for external MCPs that we can work into our apps?
+
+Cam Fortin  [5:27 PM]
+Or straight up APIs? I have an app to hit our industry prediction service with batches and store results in snowflake and I really want to pop it in as a micro app (but too slow to go through MCP, needs normal "deterministic" batch processing)
+
+Julie Sarmiento  [6:04 PM]
+Hi team,
+
+Quick question: When we create a microapp in Zichat, it creates corresponding schema in both Postgres and Snowflake using the same microapp ID.
+
+If we delete the microapp, are those database schemas automatically cleaned up, or do they remain in the servers?
+
+Thanks!
+
+
+
+Corey Saksik  [8:25 AM]
+Question re: microapp db - are those now, or can they be in the future, exposed within our chat UI?  Use case being some asynchronous reporting / analytics agents for some of the metadata related to goings-on within an app (edited) 
+
+
+
+Sagiv Levi  [9:14 AM]
+hi
+i want to add a micro app to zi-chat
+Frontend:
+	•	React with TypeScript
+	•	Material-UI / Ant Design
+	•	React Query for API state management
+	•	Recharts for metrics visualization
+Backend:
+	•	Node.js with TypeScript
+	•	Express.js
+	•	Anthropic Claude API
+	•	Datadog API
+	•	GitHub API (via Octokit)
+
+
+is this something zi-chat support?
+
+Cole DiForte  [4:05 PM]
+Hi team - I'm trying to create a new microapp, the one I have currently is working perfectly fine but running into the following error when setting up using private zscaler access for the new one (npm set registry https://artifacts.zi-int.com/artifactory/api/npm/zi-npm-virtual/).
+
+Any idea what may be causing this?  Using the non z scaler registry link fixed the error but the run time is very long.
+
+cc. @kevin.lin
+
+image.png 
+
+
+
+Nilay Kale  [5:11 AM]
+Hi team, I'm looking to store docs like pdf for my entries in my MicroApp
+Can I get access for Data Storage in MicroApps: which enables persistent data storage for the micro app?
+
+Julie Sarmiento  [6:05 PM]
+hi Team I am currently checking the snowflake- microapp integration. was able to successfully call the table i created in the schema that was automatically created. I do have a question with the warehouse. the API snowflakeExecuteQuery doesn't work without a warehouse. I added my team's warehouse
+WH_ENTERPRISE_TECHNOLOGIES_XSMALL
+but, will it work if i share the APP to another person that is not under the enterprise_technologies? i tried to pass the role that is given in the Capabilities. but it doesn't work. any ideas on how to properly implement the snowflakeExecuteQuery?
+
+
+
+Vimlesh Kumar  [5:38 AM]
+Hi Team,
+We’ve created a microapp, and for some users we’re encountering a ‘parse query results’ error, while others are able to view the data without any issues. This is happening even after updating user permissions. Does it take some time for the permission changes to reflect?
+Micro App name - ROI Analytics Enablement
+https://chat.zoominfo.co/micro-apps/377/652
+
+image.png 
+
+Zach Day  [12:10 PM]
+__HTTP 401__ on the advanced search agent - "Zi access token has expired" - this is from a microapp running a full build - is this an API issue? tool execution issue?
+
+Cam Fortin  [1:13 PM]
+Can anyone share a repo with working snowflake integration? I'm having a hell of a time getting it working - I HAVE "normal" snowflake storage already set up, but most people won't be able to use it unless I swap to "micro app specific snowflake" storage since they will have permissions issue where I'm currently storing. Thanks!
+
+Cam Fortin  [1:49 PM]
+Ask I think everyone would benefit from - ZI Agent or Micro App with access to must up to date docs and info so we have a way to ask for help without annoying you here as much.
+
+Prescott Thompson  [7:32 PM]
+I have a use case for a Task Scheduler type of utility within the Microapp (in this case sending a reminder email for overdue tasks).
+It does not appear that I can do it at this time from within the Microapp without a user logged in.
+My workaround is that I will have an scheduled agent read a table, send the email, and mark it as sent.
+The downside to doing it this way is that a user has to login to the Microapp to populate the reminder table.
+
+Any functionality like this on the roadmap?
+
+
+
+Yogesh Kudallur Hariharasuthan  [7:33 AM]
+Any help is appreciated.
+
+
+
+Team,
+How can i register snowflake queries to one of my microapp to fetch the data from snowflake.
+I'm getting this error - "Query 'get_risk_records' is not registered for microapp '725'
+Appreciate your guidance.
+Thank you.
+
+Thread in zi-chat | Feb 17th | View message
+Prescott Thompson  [12:43 PM]
+If I upload a new version of my microapp while someone is using it - does that kick them out or does it persist the old copy?
+
+Prescott Thompson  [1:47 PM]
+Did something in the Microapp break?
+
+HTTP 404: {"requestId":"rbzlpyqe","code":"HTTP_ERROR","title":"NotFoundException","detail":"The tool dbt-run_sql_query was not selected in the chat session","errorMessages":[]}
+
+Blaine Browning  [1:56 PM]
+Confirming my team is seeing the same thing.
+
+Blaine Browning  [2:04 PM]
+There was also an update regarding requiring Zscaler access now for snowflake access?  Is this related to that?  Do we know what the issue is at this point?
+
+Cam Fortin  [2:09 PM]
+My micro apps are failing too (that need snowflake): chat-service.zoominfo.co/api/v1/micro-apps/a64b0dae-c832-4a19-8486-e02af445e62e/tools:1  Failed to load resource: the server responded with a status of 404 (Not Found)
+
+Danny Myers  [2:13 PM]
+Hi all - we have identified the problem and a fix is rolling out now. Takes about 30 minutes. Sorry for the inconvenience.
+
+
+
+Namrata Singh  [1:26 AM]
+Hi team my microapp (https://chat.zoominfo.co/micro-apps/80/659) is set to Organization visibilty, but @hannah.beardsley still sees “The microapp may not exist or you don’t have permission” error. Any ideas on what might be wrong?
+
+Prescott Thompson  [1:52 PM]
+A user of my Microapp was able to click into edit mode.
+
+They did this by clicking the overall box (instead of focusing on the view button).
+
+Is this expected behavior? Can we have it emulate the View button instead of opening edit mode? (edited) 
+
+image.png 
+
+Cam Fortin  [4:57 PM]
+@jody.roberts - I have to call it quits on trying to get snowflake working in the micro app you sent - burned another two hours on this one and claude is saying some wild things and is getting as frustrated as a human would, this is by far the most frustrating/finicky issue I've ever dealt with around our platform/capabilities. I wish you luck, maybe @jered.little can help.
+
+This was when I finally gave up when the smartest thing in existance started cursing at me and saying things must be broken (and wondering how queries got registered in the working version because it can't comprehend how/why what we did in working version isn't working here):
+
+FUCK! That endpoint doesn't exist either! 404 on /api/v1/microapps/699/registerQuery"                          
+                                                                       
+The platform is LYING in the error hint - that endpoint doesn't exist!                                   
+  
+ The real question: HOW did Company MicroApp (158) get its queries registered?!                               
+                                          
+ Let me check if there's something different about how Company MicroApp's queries are set up:
+
+⏺ Read 1 file (ctrl+o to expand)           
+
+⏺ SAME FORMAT! So it's not the YAML structure...                                               
+  
+ The ONLY explanation: Either Company MicroApp (158) had queries manually registered by the platform team, OR there's a UI setting you need
+  to enable!                                    
+                                                                       
+ CHECK THIS: When you enabled "Snowflake Storage" in the UI, was there ANOTHER button/setting for "Enable Query Registration" or "Register 
+ Queries from YAML" that you need to click?
+
+ The platform's query registration from .server/snowflake.yaml appears to be completely broken or disabled for your microapp 699!"
+
+
+Liang Yang  [3:09 PM]
+Hi team, is it possible to change the workspace of an existing microapp?
+
+
+
+Prescott Thompson  [5:20 PM]
+I am trying to send a Slack message to myself through my Microapp. I keep getting 500 (Internal Server Error) - could this be a problem with my code or is sending slacks through microapps not allowed yet?
+
+
+
+Guna Kalluru  [7:09 AM]
+Hello Team ,
+Got an Issue with Snowflake Enablement
+for the same Microapp, It is working in Dev mode (npm run dev)
+but not in PRD(npm run build)
+
+Tried Disabling/enabling , Rebuilding.. (edited) 
+
+2 files 
+
+
+
+
+
+Melissa Leigh  [10:36 AM]
+Hey team, what should be the decision criteria when considering data storage in postgres vs snowflake for a microapp? I've reviewed the documentation in the guide, any other guidance I may have missed? (edited) 
+
+Julie Sarmiento  [8:00 PM]
+Hi Team, does the API ApiClient.snowflakeExecuteQuery has a rowlimit of 1000? my query returns more than 1000 records. i implemented the Batching method but after a lot of calls, it fails Batch 28 failed after 3 retry attempts: HTTP 429: {"requestId":"req-h6s","code":"HTTP_ERROR","title":"ThrottlerException","detail":"ThrottlerException: Too Many Requests","errorMessages":[]}
+
+
+
+Melissa Leigh  [5:14 PM]
+Hi Team, I working with a teammate on a microapp, we are set up on github and I've got a local copy of the app, however when I try to run dev mode for the first time I'm getting this error. I tried it on an app I've successfully run dev mode on and got a similar error: 'micro-app' is not recognized as an internal or external command,
+operable program or batch file.
+Harish Tamilarasan  [10:41 PM]
+Hi Team,
+ Is there any plan to allow adding multiple owners for Microapps? This would help when updating the build.zip file, especially since multiple people are working on the same app.
+
+
+Prescott Thompson  [4:41 PM]
+Is there a way for me to see which tool my microapp interacted with in the last time period (like 1 hour, 12 hours, 1 day etc.)?
+
+
+
+Yogesh Kudallur Hariharasuthan  [3:54 AM]
+Team,
+I'm getting cache issue and suggestion provided by Cline is as below - Can someone help me in fixing this. (edited) 
+
+image.png 
+
+Visag Venugopal  [1:27 PM]
+Hi Team,
+
+I was building an App and was getting some errors, when I checked with ZI chat it asked me the following.
+
+Kindly let me know if you have any insights on this, Thanks in advance.
+
+Have a nice day.
+
+image.png 
+
+Ant Cuomo  [5:05 PM]
+Team - can someone please outline how to create analytics dashboards with Microapps. This is to replace Amplitude for product analytics. Would the process be:
+	•	Pull amplitude event/props from snowflake
+	•	Build/define the dashboard locally by just defining the event names/props?
+	•	Upload the zipped file to ZI chat and the Microapp will pull the actual data from Snowflake? (I have the connection enabled on the app)
+If anybody has done this already please reach out. (edited) 
+
+
+
+Corey Saksik  [2:48 PM]
+Hello, wanted to follow up on the possibility of having multiple people own / run dev on a single micro app.  @melissa.leigh and I are partnering, hoping to collaborate on an app but even after cloning the repo, she can't access the dev page since she is not the app owner
+
+
+
+Stephen Borzi  [9:33 AM]
+Hi team, I built a Franchise Dataset Analytics MicroApp using the Zovable toolset, with a live connection to our Snowflake table and it displays key insights into our franchise vertical dataset. Pretty sweet! However, I need to make a few more updates  on team feedback before releasing to Sales teams, but over the past few days, the Zovable service has been down. Can someone help get the Zovable service back up and running so that I can continue building/refining my MicroApp(s)?
+
+
+
+Prescott Thompson  [1:09 PM]
+I am looking at setting up a Jenkins file for my microapp - who would I talk to about the feasibility of this?
+
+Naveen Kumar  [3:18 PM]
+Hi Team,
+I am building my first Microapp.
+I am trying to connect Snowflake data to get the real time Salesforce Dashboad. (I already have the output from Chat bot - which is working perfectly)
+I uploaded build.zip and got confirmation '8 Snowflake queries registered, upload complete' but the app still shows 404. Can you check the Datadog logs for microapp 838?"
+https://app.datadoghq.com/logs?query=service%3A%22%2Fecs%2Fsnowflake-service%22%20%40http_path%3A%2Fmicroapps%2F838%2F*
+
+Prescott Thompson  [3:19 PM]
+I have a reminder feature for tasks and every time I trigger it is sends as me - is there a way to change who it appears to be from?
+
+image.png 
+
+Prescott Thompson  [4:11 PM]
+This is new. Anyway to get it to auto-close after it is done updating?
+
+image.png 
+
+Tendekai Makoni  [6:44 PM]
+Can someone help with this? My app was working in Dev, but when I pushed it to Prod, I started getting this error.
+
+image.png 
+
+
+
+Corey Saksik  [3:41 PM]
+Would we ever anticipate multiple apps being able to speak to each others' tables?
+
+
+
+Raghvendra Singh  [8:04 AM]
+Team, currently, Microapp owners do not have automatic write access to the PRD_ZI_CHAT.MICROAPP_<microAppId> Snowflake schema. This requires them to take an additional step to obtain the necessary permissions before they can create materialized views. 
+
+Should we automate this access grant to streamline the process for Microapps that have the Snowflake capability enabled?
+Corey Saksik  [9:01 AM]
+Are we able to create dynamic tables / materialized views in our microapp schemas?  As well as creating any automated tasks across our tables?  I was trying but got some permissions errors, figured I would validate here
+
+Melissa Leigh  [4:53 PM]
+Hey team, running into an issue with a microapp app loading. I was able to view it previously and then was added as an owner. This started on Friday and is persisting today. When I click view it shows this error. App: https://chat.zoominfo.co/micro-apps/83/441
+
+2 files 
+
+
+
+
+
+Anees Syed  [4:38 AM]
+Hi Team ,
+when i am running the npm run build in VS code and updated ZIP Folder in Miro app i am seeing this error can any one help me, but with code npm run dev code it is working in DEV
+image.png 
+
+Ofira Burshtein  [5:02 AM]
+Hi all. I am trying to call DataDog REST API from my microapp and I get a security error: "Connecting to 'https://api.datadoghq.com/api/v2/logs/events/search' violates the following Content Security Policy directive: "connect-src 'self' http://localhost:3000 ws://localhost:5173 https://chat-service-stg.zoominfo.co https://chat-service.zoominfo.co https://zoominfo-chatbot-service.zi-ext.com https://zoominfo-chatbot-service.zios-apps-primary.stg.zi-int.com https://zoominfo-chatbot-service.zios-apps-primary.prd.zi-int.com https://*.zi.s3.amazonaws.com". The action has been blocked." What should I do ?
+
+Raghvendra Singh  [7:15 AM]
+Hi team, can someone help me with why I'm getting this error on deploying new build for my microapp, it works fine in Dev env though.
+Error: Failed to register Snowflake queries for micro app 692: Request to PUT:'/microapps/692/queries' failed: statusCode=403 statusText=Forbidden
+
+Taylen Ceccacci  [11:23 AM]
+Has anyone seen this "error cloning chat history" before? I now get it on all chats that exceed the $20 cost limit when asking it to create "new chat". It forces me to manually copy and paste entire chat text to new Chat as a workaround.
+
+Screenshot 2026-03-10 at 8.20.56 AM.png 
+
+Guna Kalluru  [1:20 PM]
+Hi Team,
+
+Context: We have a plan to Create Microapp using 3 tables in snowflake. Fortunately we have a semantic model built already on these 3 tables with business logics/conditions in the metadata.
+
+Clarifications i am looking for:
+	1	since i am creating Microapp and we predefined queries in microapp , we don't need semantic model here?
+	2	I believe Semantic models can be most useful when building agents  and using ZI Chat - chating interface than Microapps?
+	3	Is there a way, to make use of semantic model in microapp i am building , will that increase the efficiency/data quality?
+Melissa Leigh  [1:37 PM]
+replied to a thread:
+Hey team just following up on this one, any thoughts?
+
+Zach Day  [1:50 PM]
+@arijeet.mukherjee @jered.little thoughts on being able to query Mongo from ZI Chat? my understanding is that for some product telemetry that is source of truth and I have a few examples I'd like to be able to traverse
+
+Cooper Robertson  [2:46 PM]
+Hi, my team is struggling with microapps that are calling Snowflake data. In the past, Cline or ClaudeCode would use the tool dbt-run_sql_query to run any necessary queries for our data. Now it wants to use the snowflake.yaml file and the apiClient.snowflakeexecutequery command. This seems to work fine in the dev environment, which is where my team likes to build their apps since they dont have to build after each change. But as soon as we try to update the microapp with npm run build and upload the zip file. It seems production cant use the apiClient.snowflakeexecutequery command (At least in the browser, I havent tested in the desktop app), and they are have almost restart the project and explicitly tell Cline or ClaudeCode to use dbt-run_sql_query. Is there something I am missing? I know the 01-coding.md file tells cline/cc to use the apiClient.snowflakeexecutequery command and gives an example.
+
+
+
+ZI Chat  [1:47 PM]
+Message sent on behalf of @raghuram.parthasarathy:
+
+Hi team, I'm hitting a 403 error when uploading a microapp with Snowflake queries and need help diagnosing a platform-level issue.
+
+Microapp ID: 948
+Snowflake Username: RPARTHASARATHY
+Error: Failed to register Snowflake queries for micro app 948: Request to PUT:'/microapps/948/queries' failed: statusCode=403 statusText=Forbidden
+
+What I've verified:
+• I am the owner of microapp 948
+• Snowflake capability is enabled on the microapp
+• Schema PRD_ZI_CHAT.MICROAPP_948 exists in Snowflake
+• All 4 roles are granted to my user:
+  - SCH_MICROAPP_948_PRD_ZI_CHAT_READ_ROLE
+  - SCH_MICROAPP_948_PRD_ZI_CHAT_WRITE_ROLE
+  - SCH_MICROAPP_948_DEV_PRD_ZI_CHAT_READ_ROLE
+  - SCH_MICROAPP_948_DEV_PRD_ZI_CHAT_WRITE_ROLE
+• .server/snowflake.yaml has 7 queries using only supported parameter types (VARCHAR, INTEGER)
+• Queries reference external table PRD_RND_PLATFORM_FOUNDATIONS.ANALYSIS.AI_CREDITS_CHARGE_ACTIVITY_DETAILS using FQDN
+• I have read access to this table in Snowflake
+• Upload is via the ZI Chat UI (Edit → Upload)
+
+Upload log excerpt:
+12:10:45 PM  Checking for Snowflake configuration...
+12:10:45 PM  Loading Snowflake configuration...
+12:10:45 PM  Registering 7 Snowflake queries...
+12:11:21 PM  Error: Failed to register Snowflake queries for micro app 948: Request to PUT:'/microapps/948/queries' failed: statusCode=403 statusText=Forbidden
+
+
+
+
+All 7 queries run successfully when executed directly in Snowflake. The 403 occurs only during the PUT /microapps/948/queries API call during upload.
+
+This confirms the issue is not SQL syntax, column references, table access, parameter types, or role/schema provisioning. The 403 appears to be a platform-level issue. Any guidance on what else could be causing this would be greatly appreciated!
+
+
+Pinned by
+Jack Avina  [3:05 PM]
+https://zoominfo.enterprise.slack.com/archives/C08QQLN1BG8/p1773255859160899
+
+
+
+Join Us For AI Demo Day Tuesday, March 24 | 9 AM - 1 PM ET We're hosting a four hour virtual showcase where ZoomInfo employees demonstrate AI microapps they've build to solve real business challenges. We'll feature 12 demos from builders across the company. 
+
+Submit your demo or join the event! banner1 Think you're building the next big thing?
+
+We're looking for ZoomInfo builders like you to showcase your best stuff. 
+
+Show off your awesome microapps, time-saving automations, and tools that solve real business problems. 
+
+All selected demos will be provided a 15 minute time slot to share. You'll also receive live feedback and an AI scorecard.
+
+
+Posted in zi-chat | Mar 11th | View message
+
+
+Jessica Buchwald  [10:07 AM]
+Hey team - I have Snowflake access but when I turn on snowflake capabilities for my microapp I'm not able to access the database/schema/roles in snowflake. What am I doing wrong?
+
+2 files 
+
+
+
+
+
+Nilay Kale  [3:54 AM]
+Hi Team, is it possible to embedded as an iframe google sheets into my MicroApp, or any other way I can directly view it inside my MicroApp instead of opening/redirecting to a new tab?
+
+Prescott Thompson  [4:18 PM]
+Could we get a separate upload for Dev mode to be tested in the wild as opposed to just locally?
+While I have faith in my testing - it would be nice to have another person try it as well without borking production in the process.
+
+
+Corey Saksik  [12:56 PM]
+Hello!  We shared one of our microapps out with the CS org and folks are hitting some 524 timeout errors.  Is that due to the user volume, or something else going on?  We've had ~30 people in there previously and hit no other errors like this, but wanted to check now that the user base increased quite a bit
+
+
+
+Ofira Burshtein  [3:21 AM]
+Hi all
+
+Ofira Burshtein  [3:22 AM]
+Why am I getting and error "Error loading tools: HTTP 401: {"requestId":"req-1cd6","code":"HTTP_ERROR","title":"UnauthorizedException","detail":"ZICB: Invalid token","errorMessages":[]}" in. my MicroApp when trying to see tools when working from home - and I don't get the same error when working from office ?
+
+Harish Tamilarasan  [1:20 PM]
+Hello Team,
+
+We are building a microapp that requires a Postgres+RAG system. As part of this, we have developed a local MCP server that exposes tools for core RAG functionalities such as document ingestion, retrieval, and query execution.
+What would be the ideal approach to integrate this MCP server into the microapp?
+
+
+Megan Geare  [12:27 PM]
+Looking for a volunteer to hop on a call with me to briefly help unblock in VS code 
+
+Jack Avina  [1:20 PM]
+
+
+AI Demo Day March 24 is YOUR chance to shine. 
+
+Built an AI agent? Created a workflow automation? Developed a micro-app that's saving you hours? We want to see it! Why present at AI Demo Day?
+ Showcase your innovation to the entire company
+ Get feedback from our internal AI experts
+ Inspire your colleagues (and get inspired)
+
+Posted in zi-chat | Mar 18th | View message
+
+
+Ofira Burshtein  [4:44 AM]
+Hi all, I am getting error with access to LLM endpoint from my microapp
+
+Ofira Burshtein  [4:45 AM]
+Connecting to 'https://router.requesty-primary.prd.np-zi-int.com/v1/chat/completions' violates the following Content Security Policy directive: "connect-src 'self'  http://localhost:3000 ws://localhost:5173 https://chat-service-stg.zoominfo.co https://chat-service.zoominfo.co https://zoominfo-chatbot-service.zi-ext.com https://zoominfo-chatbot-service.zios-apps-primary.stg.zi-int.com https://zoominfo-chatbot-service.zios-apps-primary.prd.zi-int.com https://*.zi.s3.amazonaws.com". The action has been blocked.
+Aoe @ index-BIDF29dP.js:282
+Ooe @ index-BIDF29dP.js:268Understand this error
+Ofira Burshtein  [4:45 AM]
+I managed to overcome it when I ran microapp in development mode by using proxy, but it does not seem to work when I uploaded it to ZIChat
+
+[4:46 AM]
+I read that the solution should be openning this URL to access from ZIChat for the microapps
+
+[4:46 AM]
+Can I request the ZIChat team to add router.requesty-primary.prd.np-zi-int.com to the connect-src CSP directive ?
+
+
+
+Guna Kalluru  [7:50 AM]
+hi Team,
+
+my Requirement: Call an Agent from Microapp, which creates slide deck  and in response i will get the Link of the slide deck , which i will be showing in my microapp
+
+Scenario 1: If i use slides tools i am not getting desired output format from slides, (since slides tools can't generate tabular and piechart format...). But i can get the Link in response.
+
+scenario 2: if i ask to generate in HTML format(without slides tools), I am getting output in desired format and where i also have an option to export to slides (But i should click export to slides manually). I need default Link generation as in scenario 1   (Its cant currently)
+
+can we get this feature...
+
+
+
+PFB (edited) 
+
+
+Jack Avina  [11:25 AM]
+Hey Folks today is the last day to sign up for demoing your micro app!
+https://zoominfo.enterprise.slack.com/archives/C08QQLN1BG8/p1773854409906359
+
+
+
+AI Demo Day March 24 is YOUR chance to shine. 
+
+Built an AI agent? Created a workflow automation? Developed a micro-app that's saving you hours? We want to see it! Why present at AI Demo Day?
+ Showcase your innovation to the entire company
+ Get feedback from our internal AI experts
+ Inspire your colleagues (and get inspired)
+
+Posted in zi-chat | Mar 18th | View message
+Melissa Leigh  [3:43 PM]
+Hey Team, I was informed there was a request awhile back to avoid building microapps in ZI Chat Staging environment. Is that accurate and is it still accurate?
+
+
+
+Arijeet Mukherjee  [2:13 AM]
+Hey Team - There is an issue with Snowflake.
+Customers hosted in the specified regions may be unable to access or use multiple core Snowflake services and features. Affected users may be unable to sign in, execute queries, or manage data.
+https://status.snowflake.com/incidents/p3x136d3mcsp
+
+
+status.snowflake.com
+AWS - US West (Oregon): INC0154019
+Snowflake's Status Page - AWS - US West (Oregon): INC0154019.
+
+
+
+
+Suprith TV  [9:58 AM]
+Hi Team,
+I’m new to Microapps and am currently trying to create my first Microapp by following this documentation. However, I’m encountering an error while executing the npm install command in VS Code(I've downloaded and installed the node.js in my mac). I’ve attached the complete error log for your reference.
+Additionally, I have access to JFrog and have installed all the prerequisites mentioned in the document. Please let me know if I might have missed anything.
+Thank you!
+MicroAppError.log 
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@11.9.0
+2 info using node@v24.14.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/suprith.tv/MicorAppNewLearningFloder/MicroAppPlayGround/.npmrc
+
+
+MicroApp Development Guide
+
+
+Owned by: Danny Myers | 8 comments | 420 people viewed
+
+
+
+
+
+
+Added by Confluence Cloud
+Korey O'Brien  [3:18 PM]
+
+https://files.slack.com/files-tmb/T06GPQ66U5R-F0AN83GSC5B-8de4510804/ai_demo_day_-_flyer_800.jpg
+
+
+
+
+Pinned by
+Jack Avina  [12:43 PM]
+https://zoominfo.enterprise.slack.com/archives/C08QQLN1BG8/p1774370532583489
+
+
+
+ Coming up on our AI Demo Day, @william.talleur will share the full ZI Chat Roadmap in about 5-10 minutes.
+
+ JOIN HERE if you're interested! (edited) 
+
+
+Posted in zi-chat | Mar 24th | View message
+Hannah Kahl  [2:36 PM]
+Hi, I am working with @prescott.thompson and am wondering if I can be added to the micro app DB? Thanks!
+
+Prescott Thompson  [2:37 PM]
+App ID 280
+
+Prescott Thompson  [3:59 PM]
+I figured it out. Please disregard above.
+
+
+
+Hunju Yun  [11:29 AM]
+Hi team,
+One of users of 'Finance MEC Monitoring' microapp encountered this issue.
+How to resolve this?
+image (4).png 
+
+This message was deleted.
+Prescott Thompson  [12:19 PM]
+Why does TRY_PARSE_JSON(:json_data) return NULL inside snowflake.yaml stored procedures when passed valid JSON via snowflakeExecuteQuery?
+
+Corey Saksik  [1:00 PM]
+Idk if this is the right place to ask, but do we have Snowflake Cortex available for use?  Running some LLM analysis on larger data sets and context window is getting eaten super fast within a chat agent, even when splitting tasks up across multiple agents.  Can scan ~100-125 accts at a time but hoping to get this set up a bit more efficiently.  Open to other advice as well!
+
+Hunju Yun  [5:59 PM]
+Hi team, How to use LLM in Microapp? Do you have a guideline doc?
+
+
+
+Manendra Tiwari  [9:28 AM]
+Team,
+i am working on my first microapp , looks like i am getting error related to snowflake. can some one guide me.
+Screenshot 2026-03-26 at 9.26.48 AM.png 
+
+Sam Brock  [1:04 PM]
+Hello team. Working on a micro app that will be pulling many lines, and get this error. How can I get this limit increased?
+
+image.png 
+
+Erin Culp  [1:36 PM]
+Hello Team - My micro app is getting a 404 on session init. The baseApiUrl being passed is https://chat-service.zoominfo.co — should this be zoominfo.com?
+
+Hunju Yun  [3:54 PM]
+Hi team,
+@mukesh.bashkar does not appear in the 'Add people to this workspace' for this Microapp : https://chat.zoominfo.co/micro-apps/418/1108
+Maybe because he is a contractor.
+Can someone guide me how to add him?
+Can you prioritize this due to this app having a Finance March MEC Dependency?
+
+Fyi @jack.avina @william.talleur @anne.fajkus @mukesh.bashkar (edited) 
+
+image (5).png 
+
+
+
+Prescott Thompson  [1:42 PM]
+It seems that TABLE(FLATTEN(TRY_PARSE_JSON(:json_data))) is silently failing when using the Stored Procedures via the Microapp. Any idea on how to get it fail loudly?
+
+Prescott Thompson  [2:44 PM]
+My microapp has been updating for the last hour.
+
+10:48:17 AMExtracting assets/roboto-vietnamese-700-normal-iKxYNAzq.woff2
+10:48:17 AMAll files extracted successfully
+10:48:17 AMCleaning up temporary files...
+10:48:17 AMFile extraction complete
+10:48:17 AMChecking for Snowflake configuration...
+10:48:17 AMLoading Snowflake configuration...
+10:48:17 AMRegistering 216 Snowflake queries...
+
+
+Vasudha Mulakaluri  [2:48 PM]
+Hi Team, I'm setting up my first MicroApp and I'm running into some security vulnerabilities after running npm install. Would you please guide me through them?  Thanks! (edited) 
+
+Screenshot 2026-03-30 at 11.47.50 AM.png 
+
+AJ Belen  [7:38 PM]
+HI team - i am trying to update a microapp, and keep running into this issue. there are 15 snowflake queries but at this point ive stubbed down to single-table WHERE 1=0 selects for all of them. something else is going on. any suggestions here?
+
+image.png 
+
+
+
+Prescott Thompson  [12:54 PM]
+Is there a way to workaround the 1000-row cap for pulling SQL data? I am working on a Expense Analyzer at the detail level and most of the accounts have 1000+ rows.
+
+Nanxi Ge  [12:55 PM]
+Hi all — looking for some guidance here.
+I’m running into timeout issues in a MicroApp when loading data from Snowflake. The current source is a view with fairly complex logic across several large tables, so the query is understandably heavy. I’ve already optimized it as much as I can on my side, but it still doesn’t load reliably in the MicroApp.
+In this case, what would be the best approach?
+	•	Should we move toward a precomputed table (e.g., built by Engineering or scheduled)?
+	•	Or are there other best practices for making queries more MicroApp-friendly?
+Any recommendations would be super helpful — thanks in advance!
+
+Dmitry Anoshin  [4:09 PM]
+Hi team, can you please help me with permissions in Snowflake? I created a Microapp in Staging ZI Chat and enabled Snowflake integration. Can't use Dev and Prod roles:
+USE ROLE SCH_MICROAPP_456_STG_ZI_CHAT_WRITE_ROLE;
+USE ROLE SCH_MICROAPP_456_DEV_STG_ZI_CHAT_WRITE_ROLE;
+USE ROLE SCH_MICROAPP_456_DEV_STG_ZI_CHAT_READ_ROLE;
+USE ROLE SCH_MICROAPP_456_STG_ZI_CHAT_READ_ROLE;
+I'm the owner of the app. When I create a Microapp in ZI Chat Prod, it assigns roles automatically, but in Staging it's not working.
+
+
+
+
+
+
+
+
+Message zi-chat-microapps
+
+
+
+

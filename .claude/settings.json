@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next:*)",
+      "Bash(grep -rn \"spring\\(\" /Users/travis.wilber/Remotion/src/Rev*.jsx)",
+      "Bash(pkill -9 -f remotion)",
+      "Bash(npx remotion:*)",
+      "Read(//Users/travis.wilber/clipcraft/**)",
+      "Bash(node -e \"import\\(''''./lib/titleCard.js''''\\)\")",
+      "Bash(/opt/homebrew/bin/python3.11 -c \"import AppKit; print\\(''AppKit ok''\\)\")",
+      "Bash(/opt/homebrew/bin/python3.11 -c \"import rumps; print\\(''rumps ok''\\)\")",
+      "Bash(/opt/homebrew/bin/pip3.11 list:*)",
+      "Read(//opt/homebrew/lib/python3.11/site-packages/**)",
+      "Read(//Users/travis.wilber/**)",
+      "Bash(npm install:*)",
+      "Bash(curl -s http://localhost:3000/api/jira/tickets)",
+      "Bash(npx asar:*)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k: d[k] for k in [''''main'''',''''module'''',''''exports'''',''''name'''',''''version''''] if k in d}, indent=2\\)\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2\\)\\)\")",
+      "Bash(node --input-type=module:*)",
+      "mcp__premiere-pro__get_active_sequence",
+      "mcp__premiere-pro__move_item_to_bin",
+      "Bash(open /tmp/sp_030.png /tmp/sp_070.png /tmp/sp_120.png /tmp/sp_460.png)",
+      "Bash(lsof -iTCP -sTCP:LISTEN)",
+      "Read(//Users/travis.wilber/Remotion/**)",
+      "Bash(grep -oE '[0-9]+$')",
+      "Bash(grep -r \"vazxmix\\\\|macbook\\\\|MacBook\\\\|laptop\" node_modules/@react-three/drei/ --include=*.js)",
+      "Bash(mkdir -p /tmp/yt-analysis/frames)",
+      "Bash(ffmpeg -i /tmp/yt-analysis/video.mp4 -vf \"fps=0.5\" /tmp/yt-analysis/frames/frame_%03d.jpg -y)",
+      "mcp__jira__jira_search",
+      "Bash(curl -s http://localhost:3001/api/gtm/episodes)"
+    ],
+    "additionalDirectories": [
+      "/Users/travis.wilber/clipcraft/app/clips",
+      "/Users/travis.wilber/clipcraft/app/api/suggest",
+      "/Users/travis.wilber/clipcraft/app/editor/[videoId]",
+      "/Users/travis.wilber/upscaler",
+      "/Users/travis.wilber/work-dashboard/components/chat",
+      "/Users/travis.wilber/work-dashboard",
+      "/Users/travis.wilber/Remotion/remotion-library"
+    ]
+  }
+}

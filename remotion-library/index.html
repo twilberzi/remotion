@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Remotion Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1e2d5a;
+      --red: #e8182e;
+      --pink: #c2185b;
+      --light: #f8faff;
+      --border: rgba(30,45,90,0.10);
+      --shadow: 0 4px 20px rgba(0,0,60,0.08);
+    }
+
+    body { font-family: 'Figtree', 'Helvetica Neue', sans-serif; background: var(--light); color: var(--navy); min-height: 100vh; }
+
+    /* ── Header ── */
+    header {
+      background: white; border-bottom: 1px solid var(--border);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 800; color: var(--navy); }
+    .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--red), var(--pink)); }
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .search { display: flex; align-items: center; gap: 10px; background: var(--light); border: 1.5px solid var(--border); border-radius: 10px; padding: 8px 16px; width: 300px; }
+    .search input { border: none; background: transparent; font-family: inherit; font-size: 14px; color: var(--navy); outline: none; width: 100%; }
+    .search input::placeholder { color: rgba(30,45,90,0.4); }
+    .search-icon { color: rgba(30,45,90,0.35); font-size: 16px; }
+    .add-btn { display: flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 10px; border: none; background: linear-gradient(135deg, var(--red), var(--pink)); color: white; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
+    .add-btn:hover { opacity: 0.88; }
+
+    /* ── Layout ── */
+    .container { display: flex; height: calc(100vh - 64px); }
+
+    /* ── Sidebar ── */
+    aside { width: 220px; flex-shrink: 0; border-right: 1px solid var(--border); background: white; padding: 24px 16px; overflow-y: auto; }
+    .sidebar-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(30,45,90,0.45); padding: 0 8px; margin-bottom: 8px; }
+    .filter-btn { display: block; width: 100%; text-align: left; padding: 9px 12px; border-radius: 8px; border: none; background: transparent; font-family: inherit; font-size: 14px; font-weight: 500; color: rgba(30,45,90,0.65); cursor: pointer; transition: all 0.15s; margin-bottom: 2px; }
+    .filter-btn:hover { background: var(--light); color: var(--navy); }
+    .filter-btn.active { background: linear-gradient(135deg, rgba(232,24,46,0.08), rgba(194,24,91,0.08)); color: var(--red); font-weight: 700; }
+    .sidebar-divider { border: none; border-top: 1px solid var(--border); margin: 16px 8px; }
+
+    /* ── Main grid ── */
+    main { flex: 1; overflow-y: auto; padding: 32px 40px; }
+    .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(30,45,90,0.45); margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
+
+    /* ── Card ── */
+    .card { background: white; border-radius: 16px; border: 1.5px solid var(--border); box-shadow: var(--shadow); overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; position: relative; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,60,0.12); border-color: rgba(232,24,46,0.25); }
+    .card-thumb { width: 100%; aspect-ratio: 16/9; background: var(--navy); display: block; position: relative; overflow: hidden; }
+    .card-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card-thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--navy), #2d4080); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 32px; }
+    .fullscreen-btn { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 6px; background: rgba(0,0,0,0.5); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; opacity: 0; transition: opacity 0.15s; }
+    .card-thumb:hover .fullscreen-btn { opacity: 1; }
+    .card-body { padding: 18px 20px 16px; }
+    .card-series { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red); margin-bottom: 6px; }
+    .card-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+    .card-desc { font-size: 13px; font-weight: 400; color: rgba(30,45,90,0.60); line-height: 1.5; margin-bottom: 14px; }
+    .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; background: var(--light); font-size: 11px; font-weight: 600; color: rgba(30,45,90,0.55); border: 1px solid var(--border); }
+    .card-actions { display: flex; gap: 6px; }
+    .action-btn { padding: 6px 12px; border-radius: 8px; border: 1.5px solid var(--border); background: white; font-family: inherit; font-size: 12px; font-weight: 700; color: rgba(30,45,90,0.65); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+    .action-btn:hover { border-color: rgba(232,24,46,0.3); color: var(--red); }
+    .action-btn.primary { border-color: rgba(232,24,46,0.3); color: var(--red); }
+    .action-btn.primary:hover { background: var(--red); color: white; border-color: var(--red); }
+    .action-btn.success { background: #22c55e; color: white; border-color: #22c55e; }
+
+    /* ── Detail panel ── */
+    .panel-overlay { display: none; position: fixed; inset: 0; background: rgba(10,15,40,0.55); z-index: 200; align-items: flex-end; justify-content: center; }
+    .panel-overlay.open { display: flex; }
+    .panel { background: white; border-radius: 20px 20px 0 0; width: 100%; max-width: 1100px; max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; animation: slideUp 0.22s ease; }
+    @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .panel-header { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .panel-header-left { display: flex; flex-direction: column; gap: 2px; }
+    .panel-series { font-size: 12px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 0.08em; }
+    .panel-title { font-size: 18px; font-weight: 800; }
+    .panel-header-actions { display: flex; align-items: center; gap: 8px; }
+    .panel-close { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--border); background: white; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: rgba(30,45,90,0.5); transition: all 0.15s; }
+    .panel-close:hover { background: var(--light); color: var(--navy); }
+    .panel-body { display: flex; flex-direction: column; overflow: hidden; flex: 1; }
+    .panel-preview { width: 100%; height: 480px; flex-shrink: 0; background: var(--navy); display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; }
+    .panel-preview video { width: 100%; height: 100%; object-fit: contain; }
+    .panel-preview-hint { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); white-space: nowrap; pointer-events: none; }
+    .panel-code-wrap { flex: 1; display: flex; flex-direction: column; overflow: hidden; border-top: 1px solid var(--border); }
+    .panel-tabs { display: flex; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .panel-tab { padding: 12px 20px; font-family: inherit; font-size: 13px; font-weight: 600; color: rgba(30,45,90,0.5); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.15s; margin-bottom: -1px; }
+    .panel-tab.active { color: var(--red); border-bottom-color: var(--red); }
+    .panel-tab-content { flex: 1; overflow: hidden; display: none; }
+    .panel-tab-content.active { display: flex; flex-direction: column; }
+    .panel-code-toolbar { padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .panel-code-label { font-size: 11px; font-weight: 700; color: rgba(30,45,90,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+    .panel-action-btn { padding: 6px 14px; border-radius: 8px; border: 1.5px solid rgba(232,24,46,0.25); background: white; font-family: inherit; font-size: 12px; font-weight: 700; color: var(--red); cursor: pointer; transition: all 0.15s; }
+    .panel-action-btn:hover { background: var(--red); color: white; border-color: var(--red); }
+    .panel-action-btn.success { background: #22c55e; color: white; border-color: #22c55e; }
+    pre { flex: 1; overflow-y: auto; padding: 20px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.6; color: var(--navy); background: #f4f6fb; margin: 0; white-space: pre-wrap; word-break: break-word; }
+    .prompt-area { flex: 1; overflow-y: auto; padding: 20px; font-family: inherit; font-size: 14px; line-height: 1.7; color: var(--navy); background: #f4f6fb; white-space: pre-wrap; }
+    .prompt-empty { color: rgba(30,45,90,0.35); font-style: italic; }
+
+    /* ── Fullscreen video overlay ── */
+    .fs-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 400; align-items: center; justify-content: center; }
+    .fs-overlay.open { display: flex; }
+    .fs-overlay video { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+    .fs-close { position: absolute; top: 20px; right: 24px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; color: white; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .fs-close:hover { background: rgba(255,255,255,0.25); }
+
+    /* ── Upload modal ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,15,40,0.6); z-index: 300; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: white; border-radius: 20px; width: 560px; max-height: 90vh; overflow-y: auto; animation: fadeUp 0.2s ease; }
+    @keyframes fadeUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal-header { padding: 24px 28px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .modal-title { font-size: 18px; font-weight: 800; }
+    .modal-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-label { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .form-hint { font-size: 12px; color: rgba(30,45,90,0.5); }
+    .form-input, .form-select, .form-textarea { font-family: inherit; font-size: 14px; color: var(--navy); background: var(--light); border: 1.5px solid var(--border); border-radius: 10px; padding: 10px 14px; outline: none; transition: border-color 0.15s; width: 100%; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(232,24,46,0.4); }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .modal-footer { padding: 16px 28px 24px; display: flex; gap: 10px; justify-content: flex-end; }
+    .btn-cancel { padding: 10px 20px; border-radius: 10px; border: 1.5px solid var(--border); background: white; font-family: inherit; font-size: 14px; font-weight: 600; color: rgba(30,45,90,0.6); cursor: pointer; }
+    .btn-cancel:hover { background: var(--light); }
+    .btn-submit { padding: 10px 24px; border-radius: 10px; border: none; background: linear-gradient(135deg, var(--red), var(--pink)); color: white; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity 0.15s; }
+    .btn-submit:hover { opacity: 0.88; }
+    .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Empty ── */
+    .empty { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: rgba(30,45,90,0.4); }
+    .empty-icon { font-size: 40px; margin-bottom: 12px; }
+    .empty-text { font-size: 16px; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    Remotion Library
+  </div>
+  <div class="header-right">
+    <div class="search">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search" placeholder="Search compositions..." oninput="renderGrid()"/>
+    </div>
+    <button class="add-btn" onclick="openUpload()">
+      + Add Composition
+    </button>
+  </div>
+</header>
+
+<div class="container">
+  <aside>
+    <div class="sidebar-label">Series</div>
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('GTM Explained', this)">GTM Explained</button>
+    <button class="filter-btn" onclick="setFilter('Revenue Management', this)">Revenue Management</button>
+    <button class="filter-btn" onclick="setFilter('Campaign Intent', this)">Campaign Intent</button>
+    <button class="filter-btn" onclick="setFilter('Partners GTM', this)">Partners GTM</button>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-label">Type</div>
+    <button class="filter-btn" onclick="setFilter('radial', this)">Radial / Hub</button>
+    <button class="filter-btn" onclick="setFilter('grid', this)">Grid</button>
+    <button class="filter-btn" onclick="setFilter('tree', this)">Tree / Branch</button>
+    <button class="filter-btn" onclick="setFilter('panels', this)">Panels</button>
+  </aside>
+
+  <main>
+    <div class="section-title" id="section-label">All Compositions</div>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<!-- Detail panel -->
+<div class="panel-overlay" id="overlay" onclick="closePanelOverlay(event)">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-header-left">
+        <div class="panel-series" id="panel-series"></div>
+        <div class="panel-title" id="panel-title"></div>
+      </div>
+      <div class="panel-header-actions">
+        <button class="action-btn primary" id="panel-copy-code-btn" onclick="copyPanelCode()">Copy Code</button>
+        <button class="action-btn" id="panel-copy-prompt-btn" onclick="copyPanelPrompt()">Copy Prompt</button>
+        <button class="action-btn" id="panel-download-btn" onclick="downloadJsx()">↓ Download .jsx</button>
+        <button class="action-btn" id="panel-download-mp4-btn" onclick="downloadMp4()" style="display:none">↓ Download MP4</button>
+        <button class="panel-close" onclick="closePanel()">✕</button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="panel-preview" id="panel-preview" onclick="openFullscreen()">
+        <div class="panel-preview-hint">Click to fullscreen</div>
+      </div>
+      <div class="panel-code-wrap">
+        <div class="panel-tabs">
+          <button class="panel-tab active" onclick="switchTab('code', this)">Source Code</button>
+          <button class="panel-tab" onclick="switchTab('prompt', this)">Prompt</button>
+        </div>
+        <div class="panel-tab-content active" id="tab-code">
+          <div class="panel-code-toolbar">
+            <span class="panel-code-label">JSX</span>
+          </div>
+          <pre id="panel-code"></pre>
+        </div>
+        <div class="panel-tab-content" id="tab-prompt">
+          <div class="panel-code-toolbar">
+            <span class="panel-code-label">Prompt</span>
+          </div>
+          <div class="prompt-area" id="panel-prompt"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fullscreen video overlay -->
+<div class="fs-overlay" id="fs-overlay" onclick="closeFullscreen(event)">
+  <button class="fs-close" onclick="closeFullscreen()">✕</button>
+  <video id="fs-video" autoplay muted loop controls></video>
+</div>
+
+<!-- Upload modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeUploadOverlay(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Add Composition</div>
+      <button class="panel-close" onclick="closeUpload()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Title *</label>
+          <input class="form-input" id="f-title" placeholder="e.g. Account Circle"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Series *</label>
+          <select class="form-select" id="f-series">
+            <option value="GTM Explained">GTM Explained</option>
+            <option value="Revenue Management">Revenue Management</option>
+            <option value="Campaign Intent">Campaign Intent</option>
+            <option value="Partners GTM">Partners GTM</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Type</label>
+          <select class="form-select" id="f-type">
+            <option value="radial">Radial / Hub</option>
+            <option value="grid">Grid</option>
+            <option value="tree">Tree / Branch</option>
+            <option value="panels">Panels</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tags</label>
+          <input class="form-input" id="f-tags" placeholder="e.g. radial, hub-spoke"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description *</label>
+        <input class="form-input" id="f-desc" placeholder="One-line summary of what this composition does"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dropbox Download Link <span style="font-weight:400;color:rgba(30,45,90,0.45)">(optional)</span></label>
+        <input class="form-input" id="f-dropbox" placeholder="https://www.dropbox.com/s/..."/>
+        <span class="form-hint">Share the .mp4 from Dropbox → copy link → paste here. Change ?dl=0 to ?raw=1.</span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Source Code (.jsx) *</label>
+        <textarea class="form-textarea" id="f-source" placeholder="Paste the full .jsx component source here..." style="min-height:120px;font-family:'SF Mono','Fira Code',monospace;font-size:12px;"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Prompt</label>
+        <textarea class="form-textarea" id="f-prompt" placeholder="Paste the prompt that produced this composition..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeUpload()">Cancel</button>
+      <button class="btn-submit" id="submit-btn" onclick="submitComposition()">Add to Library</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Built-in compositions (loaded from manifest.json) ─────────────────────
+let BUILTIN = [];
+
+async function loadManifest() {
+  try {
+    const r = await fetch("manifest.json?t=" + Date.now());
+    const data = await r.json();
+    BUILTIN = (data.compositions || []).map(c => ({
+      id: c.id,
+      title: c.title,
+      series: c.series,
+      type: c.type,
+      desc: c.description,
+      tags: c.tags || [],
+      video: c.preview,
+      dropboxUrl: c.dropboxUrl || "",
+      source: c.file,
+      prompt: c.prompt || "",
+      builtin: true,
+    }));
+  } catch(e) {
+    console.warn("Could not load manifest.json:", e);
+  }
+}
+
+// ── State ──────────────────────────────────────────────────────────────────
+let activeFilter = "all";
+let sourceCache = {};
+let activePanelId = null;
+let userCompositions = [];
+
+// ── Persistent storage helpers ─────────────────────────────────────────────
+function saveUserCompositions() {
+  try {
+    if (window.apiClient && apiClient.setData) {
+      apiClient.setData("remotion_library_compositions", JSON.stringify(userCompositions));
+    } else {
+      localStorage.setItem("remotion_library_compositions", JSON.stringify(userCompositions));
+    }
+  } catch(e) { console.warn("Could not save:", e); }
+}
+
+async function loadUserCompositions() {
+  try {
+    let raw = null;
+    if (window.apiClient && apiClient.getData) {
+      raw = await apiClient.getData("remotion_library_compositions");
+    } else {
+      raw = localStorage.getItem("remotion_library_compositions");
+    }
+    if (raw) userCompositions = JSON.parse(raw);
+  } catch(e) { console.warn("Could not load:", e); }
+}
+
+function allCompositions() {
+  return [...BUILTIN, ...userCompositions];
+}
+
+// ── Source loading ─────────────────────────────────────────────────────────
+async function loadSource(comp) {
+  if (comp.sourceText) return comp.sourceText;
+  if (sourceCache[comp.source]) return sourceCache[comp.source];
+  try {
+    const r = await fetch(comp.source);
+    const text = await r.text();
+    sourceCache[comp.source] = text;
+    return text;
+  } catch {
+    return "// Source file not found.\n// Make sure the app is served from the Remotion root directory.";
+  }
+}
+
+// ── Filters / grid ────────────────────────────────────────────────────────
+function setFilter(filter, btn) {
+  activeFilter = filter;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById("section-label").textContent =
+    filter === "all" ? "All Compositions" : filter;
+  renderGrid();
+}
+
+function renderGrid() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const grid = document.getElementById("grid");
+
+  const filtered = allCompositions().filter(c => {
+    const matchFilter = activeFilter === "all" || c.series === activeFilter || c.type === activeFilter;
+    const matchSearch = !q ||
+      c.title.toLowerCase().includes(q) ||
+      c.desc.toLowerCase().includes(q) ||
+      (c.tags || []).some(t => t.includes(q)) ||
+      c.series.toLowerCase().includes(q);
+    return matchFilter && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty"><div class="empty-icon">◻</div><div class="empty-text">No compositions found</div></div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c => {
+    const videoEl = c.video
+      ? `<video class="card-video" src="${c.video}" muted loop preload="metadata"
+           onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"
+           style="width:100%;height:100%;object-fit:cover;display:block;"></video>`
+      : `<div class="card-thumb-placeholder">▶</div>`;
+    return `
+      <div class="card" onclick="openPanel('${c.id}')">
+        <div class="card-thumb">
+          ${videoEl}
+          <button class="fullscreen-btn" onclick="openFullscreenDirect(event,'${c.video || ''}')">⤢</button>
+        </div>
+        <div class="card-body">
+          <div class="card-series">${c.series}</div>
+          <div class="card-title">${c.title}</div>
+          <div class="card-desc">${c.desc}</div>
+          <div class="card-footer">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              ${(c.tags||[]).map(t => `<span class="tag">${t}</span>`).join("")}
+            </div>
+            <div class="card-actions">
+              <button class="action-btn" onclick="quickCopyPrompt(event,'${c.id}')">Prompt</button>
+              <button class="action-btn primary" onclick="quickCopyCode(event,'${c.id}')">Copy Code</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+// ── Detail panel ──────────────────────────────────────────────────────────
+async function openPanel(id) {
+  const c = allCompositions().find(x => x.id === id);
+  if (!c) return;
+  activePanelId = id;
+
+  document.getElementById("panel-series").textContent = c.series;
+  document.getElementById("panel-title").textContent = c.title;
+
+  // Show/hide Dropbox download button
+  document.getElementById("panel-download-mp4-btn").style.display = c.dropboxUrl ? "" : "none";
+
+  // Video preview
+  const preview = document.getElementById("panel-preview");
+  if (c.video) {
+    preview.innerHTML = `<video src="${c.video}" autoplay muted loop style="width:100%;height:100%;object-fit:contain;"></video><div class="panel-preview-hint">Click to fullscreen</div>`;
+    preview.dataset.video = c.video;
+  } else {
+    preview.innerHTML = `<div style="color:rgba(255,255,255,0.2);font-size:40px;">▶</div><div class="panel-preview-hint">No preview</div>`;
+    preview.dataset.video = "";
+  }
+
+  // Reset tabs
+  switchTab("code", document.querySelector(".panel-tab"));
+
+  document.getElementById("panel-code").textContent = "Loading...";
+  document.getElementById("panel-prompt").innerHTML = c.prompt
+    ? c.prompt
+    : `<span class="prompt-empty">No prompt saved for this composition.</span>`;
+
+  document.getElementById("overlay").classList.add("open");
+
+  const src = await loadSource(c);
+  document.getElementById("panel-code").textContent = src;
+}
+
+function switchTab(tab, btn) {
+  document.querySelectorAll(".panel-tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".panel-tab-content").forEach(t => t.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  else document.querySelectorAll(".panel-tab")[tab === "code" ? 0 : 1].classList.add("active");
+  document.getElementById(`tab-${tab}`).classList.add("active");
+}
+
+function closePanelOverlay(e) {
+  if (e && e.target !== document.getElementById("overlay")) return;
+  closePanel();
+}
+
+function closePanel() {
+  document.getElementById("overlay").classList.remove("open");
+  document.getElementById("panel-preview").innerHTML = "";
+  activePanelId = null;
+}
+
+async function copyPanelCode() {
+  const c = allCompositions().find(x => x.id === activePanelId);
+  if (!c) return;
+  const src = await loadSource(c);
+  navigator.clipboard.writeText(src);
+  flashBtn("panel-copy-code-btn", "Copied!", 2000);
+}
+
+function copyPanelPrompt() {
+  const c = allCompositions().find(x => x.id === activePanelId);
+  if (!c || !c.prompt) return;
+  navigator.clipboard.writeText(c.prompt);
+  flashBtn("panel-copy-prompt-btn", "Copied!", 2000);
+}
+
+async function downloadJsx() {
+  const c = allCompositions().find(x => x.id === activePanelId);
+  if (!c) return;
+  const src = await loadSource(c);
+  const blob = new Blob([src], { type: "text/plain" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = (c.title.replace(/\s+/g, "") + ".jsx");
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function downloadMp4() {
+  const c = allCompositions().find(x => x.id === activePanelId);
+  if (!c || !c.dropboxUrl) return;
+  window.open(c.dropboxUrl, "_blank");
+}
+
+// ── Quick card actions ─────────────────────────────────────────────────────
+async function quickCopyCode(e, id) {
+  e.stopPropagation();
+  const c = allCompositions().find(x => x.id === id);
+  if (!c) return;
+  const src = await loadSource(c);
+  navigator.clipboard.writeText(src);
+  const btn = e.target;
+  const orig = btn.textContent;
+  btn.textContent = "Copied!";
+  btn.classList.add("success");
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove("success"); }, 2000);
+}
+
+async function quickCopyPrompt(e, id) {
+  e.stopPropagation();
+  const c = allCompositions().find(x => x.id === id);
+  if (!c) return;
+  if (c.prompt) {
+    navigator.clipboard.writeText(c.prompt);
+  } else {
+    navigator.clipboard.writeText(`Build a Remotion composition: "${c.title}" — ${c.desc}`);
+  }
+  const btn = e.target;
+  const orig = btn.textContent;
+  btn.textContent = "Copied!";
+  btn.classList.add("success");
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove("success"); }, 2000);
+}
+
+// ── Fullscreen video ───────────────────────────────────────────────────────
+function openFullscreen() {
+  const src = document.getElementById("panel-preview").dataset.video;
+  if (!src) return;
+  document.getElementById("fs-video").src = src;
+  document.getElementById("fs-overlay").classList.add("open");
+}
+
+function openFullscreenDirect(e, src) {
+  e.stopPropagation();
+  if (!src) return;
+  document.getElementById("fs-video").src = src;
+  document.getElementById("fs-overlay").classList.add("open");
+}
+
+function closeFullscreen(e) {
+  if (e && e.target !== document.getElementById("fs-overlay") && e.target !== document.querySelector(".fs-close")) return;
+  document.getElementById("fs-overlay").classList.remove("open");
+  document.getElementById("fs-video").src = "";
+}
+
+// ── Upload modal ───────────────────────────────────────────────────────────
+function openUpload() { document.getElementById("modal-overlay").classList.add("open"); }
+function closeUpload() { document.getElementById("modal-overlay").classList.remove("open"); }
+function closeUploadOverlay(e) { if (e.target === document.getElementById("modal-overlay")) closeUpload(); }
+
+function submitComposition() {
+  const title   = document.getElementById("f-title").value.trim();
+  const series  = document.getElementById("f-series").value;
+  const type    = document.getElementById("f-type").value;
+  const tags    = document.getElementById("f-tags").value.split(",").map(t => t.trim()).filter(Boolean);
+  const desc    = document.getElementById("f-desc").value.trim();
+  const video   = document.getElementById("f-video") ? document.getElementById("f-video").value.trim() : "";
+  const dropboxUrl = document.getElementById("f-dropbox").value.trim();
+  const source  = document.getElementById("f-source").value.trim();
+  const prompt  = document.getElementById("f-prompt").value.trim();
+
+  if (!title || !desc || !source) {
+    alert("Title, description, and source code are required.");
+    return;
+  }
+
+  const id = "user_" + Date.now();
+  userCompositions.push({ id, title, series, type, tags, desc, video, dropboxUrl, sourceText: source, prompt, builtin: false });
+  saveUserCompositions();
+  renderGrid();
+  closeUpload();
+
+  // Reset form
+  ["f-title","f-desc","f-dropbox","f-source","f-prompt","f-tags"].forEach(f => document.getElementById(f).value = "");
+}
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+function flashBtn(id, label, ms) {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  const orig = btn.textContent;
+  btn.textContent = label;
+  btn.classList.add("success");
+  setTimeout(() => { btn.textContent = orig; btn.classList.remove("success"); }, ms);
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+(async () => {
+  await loadManifest();
+  await loadUserCompositions();
+  renderGrid();
+})();
+</script>
+</body>
+</html>
