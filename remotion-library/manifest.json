@@ -60,6 +60,21 @@
       "prompt": "Create a 3-panel sequential reveal scene. Panels reveal at delays 0, 60, 120 frames. Panel 1 (NAVY): clock icon, 'B2B sales cycles are longer', subtext about stakeholders. Panel 2 (RED): recurring arrows icon, 'Subscription models are the norm', subtext about monthly revenue. Panel 3 (PINK): bar chart icon, 'Buyer expectations are through the roof', subtext about personalization. Each panel: scale spring from bottom + text slides up + accent gradient line animates in. Use icon-box-blank.png for icon cards. GTM Explained design system.",
       "addedBy": "travis.wilber",
       "addedAt": "2026-03-31"
+    },
+    {
+      "id": "intent-data-card",
+      "title": "Intent Data Card",
+      "series": "Campaign Intent",
+      "type": "panels",
+      "tags": ["intent-data", "account-card", "animated-counter", "sparkline", "b2b"],
+      "description": "Animated B2B account card for Acme Inc. showing animated employee/revenue counters, a live sparkline chart, and an intent topic badge with score.",
+      "duration": "~338 frames @ 30fps",
+      "compositionId": "IntentDataCard",
+      "file": "examples/IntentDataCard.jsx",
+      "preview": "previews/IntentDataCard.mp4",
+      "prompt": "Create an intent data card for a fictional account (Acme Inc.) with a purple/pink pyramid logo. Show animated counters for employees (1,543) and revenue ($125.8M) that count up from zero. Include a sparkline chart that draws in left to right. Add an intent topic badge showing 'Cyber Security' with a score of 98 in green. Dark background (#111827) with blue (#3b82f6) and green (#10b981) accents. All SVG inline — no external assets.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
     }
   ]
 }
