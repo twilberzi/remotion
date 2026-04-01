@@ -6,6 +6,11 @@ import { MyComposition } from "./MyComposition.jsx";
 import { Firmographics } from "./Firmographics.jsx";
 import { DemandVsABM } from "./DemandVsABM.jsx";
 import { IntentDataCard } from "./IntentDataCard.jsx";
+import { ScoringMatrix } from "./ScoringMatrix.jsx";
+import { LeadAvsLeadB } from "./LeadAvsLeadB.jsx";
+import { BehavioralImplicit } from "./BehavioralImplicit.jsx";
+import { LeadScoringExample } from "./LeadScoringExample.jsx";
+import { LeadScoreProductUI } from "./LeadScoreProductUI.jsx";
 import { PartnersGoToMarket } from "./PartnersGoToMarket.jsx";
 import { CampaignIntentSignals } from "./CampaignIntentSignals.jsx";
 import { ExplainedComposition } from "./ExplainedComposition.jsx";
@@ -83,6 +88,46 @@ export const RemotionRoot = () => {
         id="IntentDataCard"
         component={IntentDataCard}
         durationInFrames={338}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="ScoringMatrix"
+        component={ScoringMatrix}
+        durationInFrames={210}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="LeadAvsLeadB"
+        component={LeadAvsLeadB}
+        durationInFrames={600}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="BehavioralImplicit"
+        component={BehavioralImplicit}
+        durationInFrames={300}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="LeadScoringExample"
+        component={LeadScoringExample}
+        durationInFrames={390}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="LeadScoreProductUI"
+        component={LeadScoreProductUI}
+        durationInFrames={330}
         fps={30}
         width={1920}
         height={1080}
