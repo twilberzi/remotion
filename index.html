@@ -170,6 +170,9 @@
     <button class="filter-btn" onclick="setFilter('grid', this)">Grid</button>
     <button class="filter-btn" onclick="setFilter('tree', this)">Tree / Branch</button>
     <button class="filter-btn" onclick="setFilter('panels', this)">Panels</button>
+    <hr class="sidebar-divider"/>
+    <div class="sidebar-label">Tags</div>
+    <div id="tag-filters"></div>
   </aside>
 
   <main>
@@ -611,6 +614,15 @@ async function loadSource(comp) {
 }
 
 // ── Filters / grid ────────────────────────────────────────────────────────
+function renderTagFilters() {
+  const allTags = [...new Set(allCompositions().flatMap(c => c.tags || []))].sort();
+  const container = document.getElementById("tag-filters");
+  if (!container) return;
+  container.innerHTML = allTags.map(tag =>
+    `<button class="filter-btn" onclick="setFilter('${tag}', this)">${tag}</button>`
+  ).join("");
+}
+
 function setFilter(filter, btn) {
   activeFilter = filter;
   document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -625,7 +637,7 @@ function renderGrid() {
   const grid = document.getElementById("grid");
 
   const filtered = allCompositions().filter(c => {
-    const matchFilter = activeFilter === "all" || c.series === activeFilter || c.type === activeFilter;
+    const matchFilter = activeFilter === "all" || c.series === activeFilter || c.type === activeFilter || (c.tags || []).includes(activeFilter);
     const matchSearch = !q ||
       c.title.toLowerCase().includes(q) ||
       c.desc.toLowerCase().includes(q) ||
@@ -854,6 +866,7 @@ function flashBtn(id, label, ms) {
 (async () => {
   await loadManifest();
   await loadUserCompositions();
+  renderTagFilters();
   renderGrid();
 })();
 </script>
