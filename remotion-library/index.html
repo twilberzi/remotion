@@ -297,9 +297,11 @@
 // ── Built-in compositions (loaded from manifest.json) ─────────────────────
 let BUILTIN = [];
 
+const MANIFEST_URL = "https://raw.githubusercontent.com/twilberzi/remotion/main/remotion-library/manifest.json";
+
 async function loadManifest() {
   try {
-    const r = await fetch("manifest.json?t=" + Date.now());
+    const r = await fetch(MANIFEST_URL + "?t=" + Date.now());
     const data = await r.json();
     BUILTIN = (data.compositions || []).map(c => ({
       id: c.id,
