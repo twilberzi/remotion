@@ -295,7 +295,245 @@
 // ── Built-in compositions (inlined from manifest.json) ────────────────────
 let BUILTIN = [];
 
-const MANIFEST_DATA = {"version":1,"compositions":[{"id":"scene1-account-circle","title":"Account Circle","series":"GTM Explained","type":"radial","tags":["hub-and-spoke","radial","camera-pullback","buyer-types"],"description":"Center Account hub with 5 buyer-type nodes on a ring. Camera pulls back to reveal the full circle.","duration":"~150 frames @ 30fps","compositionId":"AccountCircleScene","file":"examples/Scene1_AccountCircle.jsx","preview":"previews/Scene1_AccountCircle.mp4","prompt":"Create a radial hub-and-spoke scene with a central 'Account' card and 5 buyer-type nodes (Economic Buyer, Influencer, Decision Maker, Champion, Technical Buyer) evenly spaced on a ring. Start zoomed in on the center card, then pull back to reveal all nodes sliding out from center with dashed connectors. Use the GTM Explained design system: NAVY/RED/PINK, Figtree font, spring pop-ins with damping\u226530.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"scene2-outreach-tree","title":"Outreach Tree","series":"GTM Explained","type":"tree","tags":["tree","hierarchy","branching","personas","outreach"],"description":"Outreach root card branches to 3 persona cards (CFO, Technical Buyer, End-User), each fanning out to outcome tags.","duration":"~170 frames @ 30fps","compositionId":"OutreachTreeScene","file":"examples/Scene2_OutreachTree.jsx","preview":"previews/Scene2_OutreachTree.mp4","prompt":"Create a tree/hierarchy layout. Root 'Outreach' card with megaphone icon on the left. A vertical trunk line in the center connects to 3 persona cards (CFO with person icon, Technical Buyer with gear icon, End-User with person-check icon). Each persona fans out to 2 outcome tags (ROI/Financial Benefits, Demo/Product Features, Use Cases/User Experience). Animate: root pops first, trunk draws, personas slide in staggered, tags pop in. Use icon-box-blank.png for icon cards, dashed connector lines, GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"scene3-lead-score-grid","title":"Lead Score Grid","series":"GTM Explained","type":"grid","tags":["grid","lead-scoring","staggered","icon-cards","behavioral","firmographic"],"description":"Two rows (Behavioral, Firmographic) of 4 icon cards each with a bottom callout. Uses PNG icon assets.","duration":"~160 frames @ 30fps","compositionId":"LeadScoreGridScene","file":"examples/Scene3_LeadScoreGrid.jsx","preview":"previews/Scene3_LeadScoreGrid.mp4","prompt":"Create a 2-row grid layout for lead scoring. Row labels 'Behavioral' and 'Firmographic' on the left. Each row has 4 icon cards using PNG images from public/lead-scoring-icons/. Behavioral: Whitepaper Download (+25), Webinar Attendance (+15), Email Open (+1), Blog Subscribe (+2). Firmographic: Job Title/Position (+20), Company Size (+15), Company Revenue (+5), Company Location (+1). Rows fade in staggered, cards pop in with spring stagger, hint text slides up at end. GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"scene4-b2b-reality","title":"B2B Reality Check","series":"GTM Explained","type":"panels","tags":["panels","3-panel","sequential","reveal","b2b"],"description":"3 panels revealing sequentially at delays 0/60/120 frames. Each: icon card + headline + subtext + animated accent line.","duration":"~200 frames @ 30fps","compositionId":"B2BRealityScene","file":"examples/Scene4_B2BReality.jsx","preview":"previews/Scene4_B2BReality.mp4","prompt":"Create a 3-panel sequential reveal scene. Panels reveal at delays 0, 60, 120 frames. Panel 1 (NAVY): clock icon, 'B2B sales cycles are longer', subtext about stakeholders. Panel 2 (RED): recurring arrows icon, 'Subscription models are the norm', subtext about monthly revenue. Panel 3 (PINK): bar chart icon, 'Buyer expectations are through the roof', subtext about personalization. Each panel: scale spring from bottom + text slides up + accent gradient line animates in. Use icon-box-blank.png for icon cards. GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"intent-data-card","title":"Intent Data Card","series":"Campaign Intent","type":"panels","tags":["intent-data","account-card","animated-counter","sparkline","b2b"],"description":"Animated B2B account card for Acme Inc. showing animated employee/revenue counters, a live sparkline chart, and an intent topic badge with score.","duration":"~338 frames @ 30fps","compositionId":"IntentDataCard","file":"examples/IntentDataCard.jsx","preview":"previews/IntentDataCard.mp4","prompt":"Create an intent data card for a fictional account (Acme Inc.) with a purple/pink pyramid logo. Show animated counters for employees (1,543) and revenue ($125.8M) that count up from zero. Include a sparkline chart that draws in left to right. Add an intent topic badge showing 'Cyber Security' with a score of 98 in green. Dark background (#111827) with blue (#3b82f6) and green (#10b981) accents. All SVG inline \u2014 no external assets.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"scoring-matrix","title":"Lead Scoring Matrix","series":"GTM Explained","type":"grid","tags":["matrix","lead-scoring","demographics","behavior","hot-warm-cold"],"description":"4\u00d74 matrix mapping demographic vs behavior score bands to sales actions. Hot cells glow and pulse after reveal.","duration":"~210 frames @ 30fps","compositionId":"ScoringMatrix","file":"examples/ScoringMatrix.jsx","preview":"previews/ScoringMatrix.mp4","prompt":"Create a 4x4 scoring matrix with Demographic Score on the Y axis and Behavior Score on the X axis. Headers: 50+, 25-50, 2-24, <2. Cells classify leads as: Send to sales (hot, red gradient), Sales-oriented nurturing (warm, blue), General nurturing (light), Possibly purge (pink). Hot cells glow and pulse after the grid finishes animating in. Rows and cells stagger in with spring animations. GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"lead-a-vs-lead-b","title":"Lead A vs Lead B","series":"GTM Explained","type":"panels","tags":["lead-scoring","comparison","story","hot-cold","scoring-reveal"],"description":"Two lead cards that look identical without scoring. With scoring: Lead A (87pts) gets called, Lead B (3pts) goes to nurture.","duration":"~600 frames @ 30fps","compositionId":"LeadAvsLeadB","file":"examples/LeadAvsLeadB.jsx","preview":"previews/LeadAvsLeadB.mp4","prompt":"Two lead cards side by side. Lead A: Vertex Systems, VP of Marketing \u2014 visited pricing 3x, attended webinar, downloaded ROI calc. Lead B: Aligned Networks, VP of Marketing \u2014 subscribed to blog, no activity in 6 months. Phase 1: both cards look identical (activity hidden). Phase 2: 'Without lead scoring they look identical.' Phase 3: scoring revealed \u2014 Lead A score 87 glows red, Lead B score 3 dims. Phase 4: outcome pills ('Call today' / 'Add to nurture'). GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"behavioral-implicit","title":"Behavioral Implicit Data","series":"GTM Explained","type":"panels","tags":["behavioral","implicit","intent-signals","lead-scoring","score-circle"],"description":"6 behavioral signal rows slide in with point badges. Score circle fills to 85 on the right with HOT LEAD badge.","duration":"~300 frames @ 30fps","compositionId":"BehavioralImplicit","file":"examples/BehavioralImplicit.jsx","preview":"previews/BehavioralImplicit.mp4","prompt":"Left side: 6 behavioral signal rows sliding in staggered \u2014 pricing page (+25), buyer's guide download (+20), live demo webinar (+15), email opens (+10), website 5x in 7 days (+10), competitor comparison (+5). Right side: score circle animates to 85 out of 100 with red gradient, 'HOT LEAD \u2014 Route to Sales' badge. Tagline: 'Behavior tells you who's ready to buy right now.' GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"lead-scoring-example","title":"Lead Scoring Example","series":"GTM Explained","type":"panels","tags":["lead-scoring","walkthrough","score-ring","behavioral","sales-routing"],"description":"Sarah, VP of Marketing. 3 behavioral signals score live (+15, +20, +15). Score ring fills to 50/100, CTA appears.","duration":"~390 frames @ 30fps","compositionId":"LeadScoringExample","file":"examples/LeadScoringExample.jsx","preview":"previews/LeadScoringExample.mp4","prompt":"Left: lead card for Sarah, VP of Marketing, 500-person company. Three behavioral signal rows appear with score badges: Attended webinar (+15), Downloaded ROI calculator (+20), Visited pricing page x2 (+15). Right: animated score ring fills to 50/100 with red gradient. Breakdown card shows '15+20+15 = 50 points total'. CTA: 'Hits your threshold \u2014 route to sales immediately.' GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"},{"id":"lead-score-product-ui","title":"Lead Score Product UI","series":"GTM Explained","type":"panels","tags":["product-ui","crm","lead-scores","table","zi-ui","intent-score"],"description":"ZI-style CRM list view: NYC Event Sign-Ups, 5 accounts with animated score badges. Acme (98) gets a TOP PRIORITY callout.","duration":"~330 frames @ 30fps","compositionId":"LeadScoreProductUI","file":"examples/LeadScoreProductUI.jsx","preview":"previews/LeadScoreProductUI.mp4","prompt":"Simulate a ZI/Salesforce-style lead scoring UI card. Header: 'NYC Event Sign-Ups', 5,000 Accounts. Table columns: Name, URL, Locations, CRM, State, Lead Score. 5 rows stagger in: Knotwise (90), Acme (98), Newex (88), Doncon (72), Solis (80). Score badges are colored circles that pop in. After all rows load, Acme row highlights and a floating 'TOP PRIORITY \u2014 Acme Score 98 \u2014 Route to sales now' callout animates in from the right. GTM Explained design system.","addedBy":"travis.wilber","addedAt":"2026-03-31"}]};
+const MANIFEST_DATA = {
+  "version": 1,
+  "compositions": [
+    {
+      "id": "scene1-account-circle",
+      "title": "Account Circle",
+      "series": "GTM Explained",
+      "type": "radial",
+      "tags": [
+        "hub-and-spoke",
+        "radial",
+        "camera-pullback",
+        "buyer-types"
+      ],
+      "description": "Center Account hub with 5 buyer-type nodes on a ring. Camera pulls back to reveal the full circle.",
+      "duration": "~150 frames @ 30fps",
+      "compositionId": "AccountCircleScene",
+      "file": "examples/Scene1_AccountCircle.jsx",
+      "preview": "previews/Scene1_AccountCircle.mp4",
+      "prompt": "Create a radial hub-and-spoke scene with a central 'Account' card and 5 buyer-type nodes (Economic Buyer, Influencer, Decision Maker, Champion, Technical Buyer) evenly spaced on a ring. Start zoomed in on the center card, then pull back to reveal all nodes sliding out from center with dashed connectors. Use the GTM Explained design system: NAVY/RED/PINK, Figtree font, spring pop-ins with damping\u226530.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "scene2-outreach-tree",
+      "title": "Outreach Tree",
+      "series": "GTM Explained",
+      "type": "tree",
+      "tags": [
+        "tree",
+        "hierarchy",
+        "branching",
+        "personas",
+        "outreach"
+      ],
+      "description": "Outreach root card branches to 3 persona cards (CFO, Technical Buyer, End-User), each fanning out to outcome tags.",
+      "duration": "~170 frames @ 30fps",
+      "compositionId": "OutreachTreeScene",
+      "file": "examples/Scene2_OutreachTree.jsx",
+      "preview": "previews/Scene2_OutreachTree.mp4",
+      "prompt": "Create a tree/hierarchy layout. Root 'Outreach' card with megaphone icon on the left. A vertical trunk line in the center connects to 3 persona cards (CFO with person icon, Technical Buyer with gear icon, End-User with person-check icon). Each persona fans out to 2 outcome tags (ROI/Financial Benefits, Demo/Product Features, Use Cases/User Experience). Animate: root pops first, trunk draws, personas slide in staggered, tags pop in. Use icon-box-blank.png for icon cards, dashed connector lines, GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "scene3-lead-score-grid",
+      "title": "Lead Score Grid",
+      "series": "GTM Explained",
+      "type": "grid",
+      "tags": [
+        "grid",
+        "lead-scoring",
+        "staggered",
+        "icon-cards",
+        "behavioral",
+        "firmographic"
+      ],
+      "description": "Two rows (Behavioral, Firmographic) of 4 icon cards each with a bottom callout. Uses PNG icon assets.",
+      "duration": "~160 frames @ 30fps",
+      "compositionId": "LeadScoreGridScene",
+      "file": "examples/Scene3_LeadScoreGrid.jsx",
+      "preview": "previews/Scene3_LeadScoreGrid.mp4",
+      "prompt": "Create a 2-row grid layout for lead scoring. Row labels 'Behavioral' and 'Firmographic' on the left. Each row has 4 icon cards using PNG images from public/lead-scoring-icons/. Behavioral: Whitepaper Download (+25), Webinar Attendance (+15), Email Open (+1), Blog Subscribe (+2). Firmographic: Job Title/Position (+20), Company Size (+15), Company Revenue (+5), Company Location (+1). Rows fade in staggered, cards pop in with spring stagger, hint text slides up at end. GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "scene4-b2b-reality",
+      "title": "B2B Reality Check",
+      "series": "GTM Explained",
+      "type": "panels",
+      "tags": [
+        "panels",
+        "3-panel",
+        "sequential",
+        "reveal",
+        "b2b"
+      ],
+      "description": "3 panels revealing sequentially at delays 0/60/120 frames. Each: icon card + headline + subtext + animated accent line.",
+      "duration": "~200 frames @ 30fps",
+      "compositionId": "B2BRealityScene",
+      "file": "examples/Scene4_B2BReality.jsx",
+      "preview": "previews/Scene4_B2BReality.mp4",
+      "prompt": "Create a 3-panel sequential reveal scene. Panels reveal at delays 0, 60, 120 frames. Panel 1 (NAVY): clock icon, 'B2B sales cycles are longer', subtext about stakeholders. Panel 2 (RED): recurring arrows icon, 'Subscription models are the norm', subtext about monthly revenue. Panel 3 (PINK): bar chart icon, 'Buyer expectations are through the roof', subtext about personalization. Each panel: scale spring from bottom + text slides up + accent gradient line animates in. Use icon-box-blank.png for icon cards. GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "intent-data-card",
+      "title": "Intent Data Card",
+      "series": "Campaign Intent",
+      "type": "panels",
+      "tags": [
+        "intent-data",
+        "account-card",
+        "animated-counter",
+        "sparkline",
+        "b2b"
+      ],
+      "description": "Animated B2B account card for Acme Inc. showing animated employee/revenue counters, a live sparkline chart, and an intent topic badge with score.",
+      "duration": "~338 frames @ 30fps",
+      "compositionId": "IntentDataCard",
+      "file": "examples/IntentDataCard.jsx",
+      "preview": "previews/IntentDataCard.mp4",
+      "prompt": "Create an intent data card for a fictional account (Acme Inc.) with a purple/pink pyramid logo. Show animated counters for employees (1,543) and revenue ($125.8M) that count up from zero. Include a sparkline chart that draws in left to right. Add an intent topic badge showing 'Cyber Security' with a score of 98 in green. Dark background (#111827) with blue (#3b82f6) and green (#10b981) accents. All SVG inline \u2014 no external assets.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "scoring-matrix",
+      "title": "Lead Scoring Matrix",
+      "series": "GTM Explained",
+      "type": "grid",
+      "tags": [
+        "matrix",
+        "lead-scoring",
+        "demographics",
+        "behavior",
+        "hot-warm-cold"
+      ],
+      "description": "4\u00d74 matrix mapping demographic vs behavior score bands to sales actions. Hot cells glow and pulse after reveal.",
+      "duration": "~210 frames @ 30fps",
+      "compositionId": "ScoringMatrix",
+      "file": "examples/ScoringMatrix.jsx",
+      "preview": "previews/ScoringMatrix.mp4",
+      "prompt": "Create a 4x4 scoring matrix with Demographic Score on the Y axis and Behavior Score on the X axis. Headers: 50+, 25-50, 2-24, <2. Cells classify leads as: Send to sales (hot, red gradient), Sales-oriented nurturing (warm, blue), General nurturing (light), Possibly purge (pink). Hot cells glow and pulse after the grid finishes animating in. Rows and cells stagger in with spring animations. GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "lead-a-vs-lead-b",
+      "title": "Lead A vs Lead B",
+      "series": "GTM Explained",
+      "type": "panels",
+      "tags": [
+        "lead-scoring",
+        "comparison",
+        "story",
+        "hot-cold",
+        "scoring-reveal"
+      ],
+      "description": "Two lead cards that look identical without scoring. With scoring: Lead A (87pts) gets called, Lead B (3pts) goes to nurture.",
+      "duration": "~600 frames @ 30fps",
+      "compositionId": "LeadAvsLeadB",
+      "file": "examples/LeadAvsLeadB.jsx",
+      "preview": "previews/LeadAvsLeadB.mp4",
+      "prompt": "Two lead cards side by side. Lead A: Vertex Systems, VP of Marketing \u2014 visited pricing 3x, attended webinar, downloaded ROI calc. Lead B: Aligned Networks, VP of Marketing \u2014 subscribed to blog, no activity in 6 months. Phase 1: both cards look identical (activity hidden). Phase 2: 'Without lead scoring they look identical.' Phase 3: scoring revealed \u2014 Lead A score 87 glows red, Lead B score 3 dims. Phase 4: outcome pills ('Call today' / 'Add to nurture'). GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "behavioral-implicit",
+      "title": "Behavioral Implicit Data",
+      "series": "GTM Explained",
+      "type": "panels",
+      "tags": [
+        "behavioral",
+        "implicit",
+        "intent-signals",
+        "lead-scoring",
+        "score-circle"
+      ],
+      "description": "6 behavioral signal rows slide in with point badges. Score circle fills to 85 on the right with HOT LEAD badge.",
+      "duration": "~300 frames @ 30fps",
+      "compositionId": "BehavioralImplicit",
+      "file": "examples/BehavioralImplicit.jsx",
+      "preview": "previews/BehavioralImplicit.mp4",
+      "prompt": "Left side: 6 behavioral signal rows sliding in staggered \u2014 pricing page (+25), buyer's guide download (+20), live demo webinar (+15), email opens (+10), website 5x in 7 days (+10), competitor comparison (+5). Right side: score circle animates to 85 out of 100 with red gradient, 'HOT LEAD \u2014 Route to Sales' badge. Tagline: 'Behavior tells you who's ready to buy right now.' GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "lead-scoring-example",
+      "title": "Lead Scoring Example",
+      "series": "GTM Explained",
+      "type": "panels",
+      "tags": [
+        "lead-scoring",
+        "walkthrough",
+        "score-ring",
+        "behavioral",
+        "sales-routing"
+      ],
+      "description": "Sarah, VP of Marketing. 3 behavioral signals score live (+15, +20, +15). Score ring fills to 50/100, CTA appears.",
+      "duration": "~390 frames @ 30fps",
+      "compositionId": "LeadScoringExample",
+      "file": "examples/LeadScoringExample.jsx",
+      "preview": "previews/LeadScoringExample.mp4",
+      "prompt": "Left: lead card for Sarah, VP of Marketing, 500-person company. Three behavioral signal rows appear with score badges: Attended webinar (+15), Downloaded ROI calculator (+20), Visited pricing page x2 (+15). Right: animated score ring fills to 50/100 with red gradient. Breakdown card shows '15+20+15 = 50 points total'. CTA: 'Hits your threshold \u2014 route to sales immediately.' GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "lead-score-product-ui",
+      "title": "Lead Score Product UI",
+      "series": "GTM Explained",
+      "type": "panels",
+      "tags": [
+        "product-ui",
+        "crm",
+        "lead-scores",
+        "table",
+        "zi-ui",
+        "intent-score"
+      ],
+      "description": "ZI-style CRM list view: NYC Event Sign-Ups, 5 accounts with animated score badges. Acme (98) gets a TOP PRIORITY callout.",
+      "duration": "~330 frames @ 30fps",
+      "compositionId": "LeadScoreProductUI",
+      "file": "examples/LeadScoreProductUI.jsx",
+      "preview": "previews/LeadScoreProductUI.mp4",
+      "prompt": "Simulate a ZI/Salesforce-style lead scoring UI card. Header: 'NYC Event Sign-Ups', 5,000 Accounts. Table columns: Name, URL, Locations, CRM, State, Lead Score. 5 rows stagger in: Knotwise (90), Acme (98), Newex (88), Doncon (72), Solis (80). Score badges are colored circles that pop in. After all rows load, Acme row highlights and a floating 'TOP PRIORITY \u2014 Acme Score 98 \u2014 Route to sales now' callout animates in from the right. GTM Explained design system.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    },
+    {
+      "id": "screen3d-spring",
+      "title": "3D Screen Reveal \u2014 Spring",
+      "series": "GTM Studio",
+      "type": "product-ui",
+      "tags": [
+        "3d",
+        "screen",
+        "zoom",
+        "camera",
+        "saas",
+        "product-ui",
+        "spring"
+      ],
+      "description": "Flat SaaS screen springs up into view with floating signal chips, then camera slides right and zooms into the Activate panel with a cinematic side angle. Pans to Export to Outreach, then zooms out to reveal the full window.",
+      "duration": "~630 frames @ 30fps",
+      "compositionId": "Screen3DSpring",
+      "file": "src/Screen3DSpring.jsx",
+      "preview": "previews/Screen3DSpring.mp4",
+      "prompt": "3D screen reveal: flat entry spring, floating signal chips (Trigger/AI Agent/Output), slow breathing hold, camera slides right to edge, zooms into Activate panel with rotY side angle, push-in, pan to Export to Outreach, zoom out 3%, full zoom-out reveal back to center. Dark BG (#08101f), red/purple waves. Use Screen3DSpring component.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-03-31"
+    }
+  ]
+};
 
 async function loadManifest() {
   BUILTIN = (MANIFEST_DATA.compositions || []).map(c => ({
