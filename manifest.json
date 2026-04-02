@@ -223,6 +223,32 @@
       "poster": "posters/LeadScoreProductUI.png"
     },
     {
+      "id": "text-animator",
+      "title": "Text Animator",
+      "series": "Utilities",
+      "type": "other",
+      "tags": [
+        "text",
+        "animation",
+        "typography",
+        "stagger",
+        "per-word",
+        "ae-port",
+        "rise",
+        "shift",
+        "scale"
+      ],
+      "description": "Reusable text animator component ported from AE 'Text Animators [Timed].aegraphic'. 5 styles: rise, scaleUp, shiftLeft, shiftRight, cut. Supports per-word stagger mode. quartInOut easing matched from AE source.",
+      "duration": "~900 frames @ 30fps (demo cycles all 5 styles)",
+      "compositionId": "TextAnimatorDemo",
+      "file": "examples/TextAnimator.jsx",
+      "preview": "previews/TextAnimator.mp4",
+      "poster": "posters/TextAnimator.png",
+      "prompt": "Port AE 'Text Animators [Timed].aegraphic' to Remotion. 5 animation styles: Rise to the Right (translate up+right + fade), Scale Up (grow from 40% + fade), Shift Left (slide from right), Shift Right (slide from left), Straight Cut (instant pop-on). quartInOut easing (t<0.5: 8t^4, t>=0.5: 1-8(1-t)^4). animFrames=17 (0.7s @ 23.976fps). Props: bullets=[{text, endFrame}], animStyle, fontSize, fontWeight, color, align, animFrames, byWord, wordStagger, x, y, lineGap, frame. Per-word mode: byWord=true splits each line into individual word spans with staggered endFrames.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-01"
+    },
+    {
       "id": "screen3d-spring",
       "title": "3D Screen Reveal \u2014 Spring",
       "series": "GTM Studio",
