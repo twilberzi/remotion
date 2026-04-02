@@ -272,5 +272,31 @@
       "addedAt": "2026-03-31",
       "poster": "posters/Screen3DSpring.png"
     }
+  ,
+    {
+      "id": "bootstrap-story",
+      "title": "Bootstrap Story — Credit Cards",
+      "series": "Henry Schuck Social Clips",
+      "type": "panels",
+      "tags": [
+        "credit-card",
+        "counter-animation",
+        "kinetic-text",
+        "stat-card",
+        "story",
+        "bootstrapped",
+        "glow",
+        "photo-avatar"
+      ],
+      "description": "4-beat kinetic graphic: BOOTSTRAPPED slams in, two credit cards slide in with $0→$25k counters, MAXED OUT glows red, then a stat card reveals $50k → $11.4B valuation.",
+      "duration": "~690 frames @ 30fps",
+      "compositionId": "BootstrapStory",
+      "file": "examples/BootstrapStory.jsx",
+      "preview": "previews/BootstrapStory.mp4",
+      "poster": "posters/BootstrapStory.png",
+      "prompt": "Henry Schuck bootstrapping story. Beat 1: 'BOOTSTRAPPED' slams in white 120px, shrinks as cards arrive. Beat 2: Two navy credit cards slide in from ±420px — left card has circular grandpa photo avatar (public/grandpa.jpg), right card has gold chip. Both counters count $0→$25,000. Beat 3: 'MAXED OUT' in red 88px at bottom, cards glow red, limit bars fill red. Beat 4: Cards fade, stat card reveals '$50,000 → ↗ $11.4B' with gradient text, '7 years · No outside capital'. Transparent alpha overlay for Premiere. ZoomInfo brand: NAVY #1e2d5a, RED #e8182e, Figtree font.",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-01"
+    }
   ]
 }
