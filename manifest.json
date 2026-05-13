@@ -265,17 +265,16 @@
       "description": "Flat SaaS screen springs up into view with floating signal chips, then camera slides right and zooms into the Activate panel with a cinematic side angle. Pans to Export to Outreach, then zooms out to reveal the full window.",
       "duration": "~630 frames @ 30fps",
       "compositionId": "Screen3DSpring",
-      "file": "src/Screen3DSpring.jsx",
+      "file": "examples/Screen3DSpring.jsx",
       "preview": "previews/Screen3DSpring.mp4",
       "prompt": "3D screen reveal: flat entry spring, floating signal chips (Trigger/AI Agent/Output), slow breathing hold, camera slides right to edge, zooms into Activate panel with rotY side angle, push-in, pan to Export to Outreach, zoom out 3%, full zoom-out reveal back to center. Dark BG (#08101f), red/purple waves. Use Screen3DSpring component.",
       "addedBy": "travis.wilber",
       "addedAt": "2026-03-31",
       "poster": "posters/Screen3DSpring.png"
-    }
-  ,
+    },
     {
       "id": "bootstrap-story",
-      "title": "Bootstrap Story — Credit Cards",
+      "title": "Bootstrap Story \u2014 Credit Cards",
       "series": "Henry Schuck Social Clips",
       "type": "panels",
       "tags": [
@@ -288,15 +287,231 @@
         "glow",
         "photo-avatar"
       ],
-      "description": "4-beat kinetic graphic: BOOTSTRAPPED slams in, two credit cards slide in with $0→$25k counters, MAXED OUT glows red, then a stat card reveals $50k → $11.4B valuation.",
+      "description": "4-beat kinetic graphic: BOOTSTRAPPED slams in, two credit cards slide in with $0\u2192$25k counters, MAXED OUT glows red, then a stat card reveals $50k \u2192 $11.4B valuation.",
       "duration": "~690 frames @ 30fps",
       "compositionId": "BootstrapStory",
       "file": "examples/BootstrapStory.jsx",
       "preview": "previews/BootstrapStory.mp4",
       "poster": "posters/BootstrapStory.png",
-      "prompt": "Henry Schuck bootstrapping story. Beat 1: 'BOOTSTRAPPED' slams in white 120px, shrinks as cards arrive. Beat 2: Two navy credit cards slide in from ±420px — left card has circular grandpa photo avatar (public/grandpa.jpg), right card has gold chip. Both counters count $0→$25,000. Beat 3: 'MAXED OUT' in red 88px at bottom, cards glow red, limit bars fill red. Beat 4: Cards fade, stat card reveals '$50,000 → ↗ $11.4B' with gradient text, '7 years · No outside capital'. Transparent alpha overlay for Premiere. ZoomInfo brand: NAVY #1e2d5a, RED #e8182e, Figtree font.",
+      "prompt": "Henry Schuck bootstrapping story. Beat 1: 'BOOTSTRAPPED' slams in white 120px, shrinks as cards arrive. Beat 2: Two navy credit cards slide in from \u00b1420px \u2014 left card has circular grandpa photo avatar (public/grandpa.jpg), right card has gold chip. Both counters count $0\u2192$25,000. Beat 3: 'MAXED OUT' in red 88px at bottom, cards glow red, limit bars fill red. Beat 4: Cards fade, stat card reveals '$50,000 \u2192 \u2197 $11.4B' with gradient text, '7 years \u00b7 No outside capital'. Transparent alpha overlay for Premiere. ZoomInfo brand: NAVY #1e2d5a, RED #e8182e, Figtree font.",
       "addedBy": "travis.wilber",
       "addedAt": "2026-04-01"
+    },
+    {
+      "id": "lg-fourstages-s1",
+      "title": "Lead Scoring Intro",
+      "series": "Lead Gen",
+      "type": "panels",
+      "tags": [
+        "lead-scoring",
+        "intro",
+        "gtm-explained"
+      ],
+      "description": "Lead scoring intro \u2014 4-stage walkthrough.",
+      "duration": "~540 frames @ 30fps",
+      "compositionId": "LeadScoringIntro",
+      "file": "examples/LeadScoringIntro.jsx",
+      "preview": "previews/LG-FourStages-S1.mp4",
+      "poster": "posters/LG-FourStages-S1.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "revops-graphics-s1",
+      "title": "Revenue Management",
+      "series": "RevOps",
+      "type": "radial",
+      "tags": [
+        "revops",
+        "revenue",
+        "radial",
+        "5-spoke"
+      ],
+      "description": "5-spoke radial revenue management diagram.",
+      "duration": "~240 frames @ 30fps",
+      "compositionId": "RevenueManagement",
+      "file": "examples/RevenueManagement.jsx",
+      "preview": "previews/RevOpsGraphics-S1.mp4",
+      "poster": "posters/RevOpsGraphics-S1.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "explained-composition-2",
+      "title": "Explained Composition 2",
+      "series": "Explained",
+      "type": "other",
+      "tags": [
+        "explained",
+        "composition"
+      ],
+      "description": "Secondary Explained composition.",
+      "duration": "~680 frames @ 30fps",
+      "compositionId": "ExplainedComposition2",
+      "file": "examples/ExplainedComposition2.jsx",
+      "preview": "previews/ExplainedComposition2.mp4",
+      "poster": "posters/ExplainedComposition2.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "five-product-videos",
+      "title": "Explained Composition",
+      "series": "Explained",
+      "type": "panels",
+      "tags": [
+        "explained",
+        "multi-scene",
+        "overview"
+      ],
+      "description": "Multi-scene GTM Explained composition.",
+      "duration": "~680 frames @ 30fps",
+      "compositionId": "ExplainedComposition",
+      "file": "examples/ExplainedComposition.jsx",
+      "preview": "previews/FiveProductVideos.mp4",
+      "poster": "posters/FiveProductVideos.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "gtmstudio-hero",
+      "title": "GTM Studio",
+      "series": "GTM Studio",
+      "type": "product-ui",
+      "tags": [
+        "gtm-studio",
+        "product-ui",
+        "saas"
+      ],
+      "description": "GTM Studio product UI composition.",
+      "duration": "~630 frames @ 30fps",
+      "compositionId": "GTMStudio",
+      "file": "examples/GTMStudio.jsx",
+      "preview": "previews/GTMStudioHero.mp4",
+      "poster": "posters/GTMStudioHero.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "gtmstudio-hero-v2-4k",
+      "title": "Audience Development",
+      "series": "GTM Studio",
+      "type": "product-ui",
+      "tags": [
+        "audience",
+        "development",
+        "targeting"
+      ],
+      "description": "Audience development targeting animation.",
+      "duration": "~300 frames @ 30fps",
+      "compositionId": "AudienceDevelopment",
+      "file": "examples/AudienceDevelopment.jsx",
+      "preview": "previews/GTMStudioHeroV2-4K.mp4",
+      "poster": "posters/GTMStudioHeroV2-4K.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "crm-sync-card",
+      "title": "Campaign Intent Signals",
+      "series": "Campaign Intent",
+      "type": "panels",
+      "tags": [
+        "campaign",
+        "intent",
+        "signals",
+        "cards"
+      ],
+      "description": "3-card float-in showing campaign intent signals.",
+      "duration": "~240 frames @ 30fps",
+      "compositionId": "CampaignIntentSignals",
+      "file": "examples/CampaignIntentSignals.jsx",
+      "preview": "previews/CRMSyncCard.mp4",
+      "poster": "posters/CRMSyncCard.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "gtm-launch-plan",
+      "title": "B2B Data Explained",
+      "series": "GTM Explained",
+      "type": "panels",
+      "tags": [
+        "b2b",
+        "data",
+        "explained",
+        "timeline"
+      ],
+      "description": "B2B data explained composition.",
+      "duration": "~300 frames @ 30fps",
+      "compositionId": "B2BDataExplained",
+      "file": "examples/B2BDataExplained.jsx",
+      "preview": "previews/GTM-LaunchPlan.mp4",
+      "poster": "posters/GTM-LaunchPlan.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "rev-analyze-patterns-s3",
+      "title": "Rev Signals to Actions",
+      "series": "Revenue Explained",
+      "type": "panels",
+      "tags": [
+        "revenue",
+        "signals",
+        "actions",
+        "patterns"
+      ],
+      "description": "Revenue signals to actions composition.",
+      "duration": "~300 frames @ 30fps",
+      "compositionId": "RevSignalsToActions",
+      "file": "examples/RevSignalsToActions.jsx",
+      "preview": "previews/RevAnalyzePatterns-S3.mp4",
+      "poster": "posters/RevAnalyzePatterns-S3.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "rev-guide-alerts-s3",
+      "title": "Rev When You Need It",
+      "series": "Revenue Explained",
+      "type": "panels",
+      "tags": [
+        "revenue",
+        "guidance",
+        "alerts",
+        "timing"
+      ],
+      "description": "Revenue guidance \u2014 when you need it composition.",
+      "duration": "~300 frames @ 30fps",
+      "compositionId": "RevWhenYouNeed",
+      "file": "examples/RevWhenYouNeed.jsx",
+      "preview": "previews/RevGuideAlerts-S3.mp4",
+      "poster": "posters/RevGuideAlerts-S3.png",
+      "addedBy": "travis.wilber",
+      "addedAt": "2026-04-24"
+    },
+    {
+      "id": "closed-won-lookalike",
+      "title": "Closed-Won Lookalike Play",
+      "series": "GTM Studio",
+      "type": "panels",
+      "tags": [
+        "ai-agent",
+        "lookalike",
+        "signal",
+        "websights",
+        "salesforce",
+        "intent"
+      ],
+      "description": "AI agent card animating a closed-won lookalike play: WebSights signal, Salesforce trigger, intent signal checklist, and Ready to Engage chip.",
+      "duration": "240 frames @ 30fps",
+      "compositionId": "ClosedWonLookalike",
+      "file": "examples/ClosedWonLookalike.jsx",
+      "preview": "previews/ClosedWonLookalike.mp4",
+      "prompt": "Animate a GTM Studio AI agent card: WebSights signal card floats left, Salesforce closed-won trigger above, animated checklist of intent signals, Ready to Engage chip on right.",
+      "addedBy": "Travis",
+      "addedAt": "2026-05-13"
     }
   ]
 }
